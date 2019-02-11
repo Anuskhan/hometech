@@ -27,7 +27,7 @@ export default class Events extends Component {
     renderHeader = () => {
         return (
             <View style={EventStyle.subHeader}>
-                <Text style={EventStyle.subHeaderTitle}>Create Event</Text>
+                <Text style={EventStyle.subHeaderTitle}>Create complain</Text>
 
                 <TouchableOpacity  onPress={() => {this.props.navigation.navigate("EventCreate")}}>
                <Text style={{fontSize:24}}> + </Text>

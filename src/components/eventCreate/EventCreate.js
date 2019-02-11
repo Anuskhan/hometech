@@ -35,7 +35,7 @@ export default class EventCreate extends Component {
         let { isDatePickerVisible, startDate, endDate} = this.state;
         return (
             <View>
-                <Text style={EventCreateStyle.heading}>EventCreate</Text>
+                <Text style={EventCreateStyle.heading}>complain crate</Text>
                 <View style={EventCreateStyle.textFeildView}>
                     <TextField
                         label='Name'

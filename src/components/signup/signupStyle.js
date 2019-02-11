@@ -12,24 +12,24 @@ export default signUpStyle = StyleSheet.create({
        
     },
     ButtonStyle: {
-     backgroundColor:'#d9005f',
+     backgroundColor:'#f29638',
      width:'90%',
     alignItems:'center',
     color:'blue',
     borderRadius:5,
     height:50,
-    marginTop:30,
+    marginTop:15,
     justifyContent:'center'
     },
 
     viewBoxTop: {
-        height:'40%',
+        height:'35%',
           justifyContent: 'center',
            alignItems: 'center',
     },
 
     viewBoxButtom: {
-        height:'60%',
+        height:'70%',
         marginTop:10,
     },
 

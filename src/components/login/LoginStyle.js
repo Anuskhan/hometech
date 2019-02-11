@@ -7,7 +7,7 @@ export default LoginStyle = StyleSheet.create({
         flex: 1
     },
     ButtonStyle: {
-     backgroundColor:'#d9005f',
+     backgroundColor:'#f29638',
      width:'90%',
     alignItems:'center',
     color:'blue',

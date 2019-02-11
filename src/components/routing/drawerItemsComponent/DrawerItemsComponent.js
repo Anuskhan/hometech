@@ -27,9 +27,9 @@ export default class DrawerItemsComponent extends Component<{}> {
         let { navigation } = this.props;
         return (
             <View style={DrawerItemsComponentStyle.drawerContainer}>
+                <ImageBackground style={DrawerItemsComponentStyle.drawerBackgroundImage} source={require('../../../assets/images/drawerbg1.jpg')}>
                 <Image style={DrawerItemsComponentStyle.drawerHeaderImage}
-                    source={require('../../../assets/images/drawer.jpg')} />
-                <ImageBackground style={DrawerItemsComponentStyle.drawerBackgroundImage} source={require('../../../assets/images/drawerbg.jpg')}>
+                    source={require('../../../assets/images/logo.png')} />
                     <ScrollView>
                         <View style={DrawerItemsComponentStyle.drawerList}>
                             <TouchableOpacity style={DrawerItemsComponentStyle.drawerListItem} onPress={(nextRouteName) => { this.navigationScreenFunction('Dashboard') }} activeOpacity={0.6}>
@@ -39,12 +39,12 @@ export default class DrawerItemsComponent extends Component<{}> {
                             </TouchableOpacity>
                             <TouchableOpacity style={DrawerItemsComponentStyle.drawerListItem} onPress={(nextRouteName) => { this.navigationScreenFunction('Events') }} activeOpacity={0.6}>
                                 <Text style={[DrawerItemsComponentStyle.drawerListItemText]}>
-                                    Events
+                                    Complain
                               </Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={DrawerItemsComponentStyle.drawerListItem} onPress={(nextRouteName) => { this.navigationScreenFunction('Speaker') }} activeOpacity={0.6}>
                                 <Text style={[DrawerItemsComponentStyle.drawerListItemText]}>
-                                    Speaker
+                                    List
                               </Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={DrawerItemsComponentStyle.drawerListItem} onPress={(nextRouteName) => { this.navigationScreenFunction('Home') }} activeOpacity={0.6}>

@@ -64,7 +64,7 @@ export default class Dashboard extends Component {
                 let initialPosition = JSON.stringify(position);
                 this.setState({ initialPosition });
                 this.getCurrentPosition();
-                console.log(this.getCurrentPosition(),"sds")
+                // console.log(this.getCurrentPosition(),"sds")
 
             }, error => console.log(error), { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 });
         }.bind(this)

@@ -7,6 +7,8 @@ import {
 } from 'react-native';
 // import SplashScreen from 'react-native-splash-screen';
 import { Drawer } from './src/components/routing/route'
+import OfflineNotice from './src/components/offlinenoti';
+
 export default class App extends Component<{}> {
   constructor(props){
     super(props);
@@ -24,6 +26,7 @@ export default class App extends Component<{}> {
     return (
         <View style={styles.container}>
          <Drawer screenProps={{logout:this.logout.bind(this)}}/>
+         <OfflineNotice/>
         </View>
     );
   }

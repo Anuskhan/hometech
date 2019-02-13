@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import  LocationServicesDialogBox from "react-native-android-location-services-dialog-box";
+import MapView from 'react-native-maps';
 
 
 import {
@@ -7,7 +8,7 @@ import {
     View,
     Image,
     TextInput,
-    ScrollView,
+    ScrollView,StyleSheet,
     TouchableOpacity,BackHandler, DeviceEventEmitter,
     Button,
     ImageBackground
@@ -64,7 +65,7 @@ export default class Dashboard extends Component {
                 let initialPosition = JSON.stringify(position);
                 this.setState({ initialPosition });
                 this.getCurrentPosition();
-                // console.log(this.getCurrentPosition(),"sds")
+                console.log(this.getCurrentPosition(),"sds")
 
             }, error => console.log(error), { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 });
         }.bind(this)
@@ -80,24 +81,24 @@ export default class Dashboard extends Component {
 
        this.props.screenProps.logout(true)
     }
-    checkApi=()=>{
-        
-        console.log("componentDidMount+======")
-        // axios.get(`https://jsonplaceholder.typicode.com/posts`)
-        axios.get('http://connfa.com/api/getinfo/')
-        .then((res) => {
-      console.log(res.data,"response")    
-    }).catch((error) => { 
-        
-        console.log(error,"error")    
-        }
-        );
-    }
+ 
     render() {
         return (
           
                 <View >
-                  <Text>anas khan</Text>
+                  
+                <View style={styles.mapContainer}>    
+                <View style={styles.container}>
+                  <MapView
+            region={this.state.mapRegion}
+            style={styles.map}
+            showsUserLocation={true}
+            >
+        </MapView>
+
+                </View>
+                </View>
+                {(!this.state.mapRegion==null)?<Text>{this.state.mapRegion.latitude}</Text>:null}
                 </View>
             
                
@@ -105,6 +106,24 @@ export default class Dashboard extends Component {
     }
 
 };
+
+const styles = StyleSheet.create({
+
+    map: {
+      ...StyleSheet.absoluteFillObject,
+    },
+    mapContainer: {
+        height:300
+    },
+    container: {
+        ...StyleSheet.absoluteFillObject,
+         flex:1,
+         height:300,
+        justifyContent: 'flex-end',
+        alignItems: 'center',
+      },
+    });
+
 // import React, { Component } from "react";
 // import { Col, Row, Grid } from 'react-native-easy-grid';
 // import { Container,Item,Input,Label,Form, Header,Body, Button, Content, Card, CardItem,ActionSheet, Text } from "native-base";

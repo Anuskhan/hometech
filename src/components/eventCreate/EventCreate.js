@@ -37,21 +37,21 @@ export default class EventCreate extends Component {
             <View>
                 <Text style={EventCreateStyle.heading}>complain crate</Text>
                 <View style={EventCreateStyle.textFeildView}>
-                    <TextField
-                        label='Name'
-                        value={this.state.name}
-                        onChangeText={this.onChange.bind(this, 'name')}
-                    />
-                    <TextField
-                        label='Description'
-                        value={this.state.description}
-                        onChangeText={this.onChange.bind(this, 'description')}
-                    />
-                    <TextField
-                        label='Location'
-                        value={this.state.location}
-                        onChangeText={this.onChange.bind(this, 'location')}
-                    />
+                        <TextField
+                            label='Name'
+                            value={this.state.name}
+                            onChangeText={this.onChange.bind(this, 'name')}
+                        />
+                        <TextField
+                            label='Description'
+                            value={this.state.description}
+                            onChangeText={this.onChange.bind(this, 'description')}
+                        />
+                        <TextField
+                            label='Location'
+                            value={this.state.location}
+                            onChangeText={this.onChange.bind(this, 'location')}
+                        />
 
                   
                    

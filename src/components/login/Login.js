@@ -18,58 +18,81 @@ export default class Login extends Component<{}> {
     constructor() {
         super();
         this.state = {
-            email: "",
-            password: ""
+            name: "",
+            phone: ""
         }
     }
 
     onChange(name, val) {
         this.setState({ [name]: val })
+        
     }
+login=()=>{
+    let { name,phone} = this.state;
+    let disable = !(!name && !phone);
+    console.log(disable,"name")
+    console.log(name,"name")
+    console.log(phone,"namPPPe")
+    if(disable){
+        let item = {
+           name,phone
+        };
+        this.props.navigation.navigate("Dashboard",item) 
+     alert("yes")   
+    }else{
+        alert("yes")   
 
+    }
+    
+}
     render() {
+        let { name,phone} = this.state;
+        let disable = !(name && phone);
+        // console.log(disable,'ssdsd')
         return (
             <ImageBackground style={{ flex: 1 }} source={require('../../assets/images/background.jpg')}>
                 <ScrollView>
                     <View style={LoginStyle.viewBoxTop} >
                         <Image style={LoginStyle.Logoimage}
                             source={require('../../assets/images/logo.png')} />
+                        
                     </View>
-
                     <View style={LoginStyle.viewBoxButtom} >
                         <View style={{ alignItems: 'center' }}>
                             <View style={LoginStyle.TextInputView}>
                                 <TextInput underlineColorAndroid='transparent'
                                     style={LoginStyle.TextInputStyle}
-                                    placeholder="Email" placeholderTextColor="#b2b2b2"
-                                    onChange={this.onChange.bind(this, 'email')}
-                                    value={this.state.email}
+                                    placeholder="Name" placeholderTextColor="#b2b2b2"
+                                    onChangeText={this.onChange.bind(this, 'name')}
+                                    value={name}
                                 />
                             </View>
                             <View style={LoginStyle.TextInputView}>
                                 <TextInput underlineColorAndroid='transparent'
                                     style={LoginStyle.TextInputStyle}
+                                    keyboardType="phone-pad"
+                                    maxLength={11}
                                     placeholderTextColor="#b2b2b2"
-                                    onChange={this.onChange.bind(this, 'password')}
-                                    placeholder="Password"
-                                    value={this.state.password}
+                                    onChangeText={this.onChange.bind(this, 'phone')}
+                                    placeholder="Phone number"
+                                    value={phone}
                                 />
                             </View>
                             
-                            <TouchableOpacity style={LoginStyle.ButtonStyle}
-                             onPress={() => { this.props.navigation.navigate("Home") }}
+                            <TouchableOpacity   disabled={disable} style={LoginStyle.ButtonStyle}
+                             onPress={() => {this.login()}}
                             >
                                 <Text style={LoginStyle.buttomText}>
                                     LOG IN
                  </Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={LoginStyle.TouchableOpacityStyle}
+                            {/* <TouchableOpacity style={LoginStyle.TouchableOpacityStyle}
                                 onPress={() => { this.props.navigation.navigate("Signup") }}
                             >
                                 <Text style={LoginStyle.textColor} >
                                     Create new account
                  </Text>
-                            </TouchableOpacity>
+                            </TouchableOpacity> */}
                         </View>
                     </View>
                 </ScrollView>

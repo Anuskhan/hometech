@@ -3,6 +3,8 @@ import  LocationServicesDialogBox from "react-native-android-location-services-d
 import MapView from 'react-native-maps';
 import { TextField } from 'react-native-material-textfield';
 import DashboardStyle from './DashboardStyle';
+import firebase from "firebase";
+import moment from "moment";
 
 
 import {
@@ -48,12 +50,15 @@ export default class Dashboard extends Component {
               this.setState({
                 error: null,
                 mapRegion: region,
+               
               });
             },
             (error) => this.setState({ error: error.message }),
           );
     }
+
     componentDidMount(){
+     
     //    this.checkApi();
     LocationServicesDialogBox.checkLocationServicesIsEnabled({
         message: "<h2>Use Location ?</h2>This app wants to change your device settings:<br/><br/>Use GPS, Wi-Fi, and cell network for location<br/><br/><a href='#'>Learn more</a>",
@@ -83,9 +88,19 @@ export default class Dashboard extends Component {
         console.log(status); //  status => {enabled: false, status: "disabled"} or {enabled: true, status: "enabled"}
     });
     this.getCurrentPosition();
-    console.log(this.getCurrentPosition(),"sds")
 
        this.props.screenProps.logout(true)
+
+       let { params } = this.props.navigation.state;
+      
+       if (params) {
+           console.log(params,"params")
+           this.setState({
+               name: params.name,
+               phone: params.phone,
+            })
+            console.log(this.state.name,"item")
+       }
     }
  
     onChange(name, val) {
@@ -95,14 +110,30 @@ export default class Dashboard extends Component {
         this.setState({ category: category })
      }
   submit =()=>{
-// alert("asdas")
-        alert(this.state.name)
-        alert(this.state.phone)
-        alert(this.state.address)
-        alert(this.state.category)
+      // let obj = { dateOfBirth, religion, email, gender, maritaStatus };
+      
+      let {  name,phone,address,category,mapRegion} = this.state;
+      let date =moment().format(" Do MMM YY");
+      let payload = {name,phone,address,category,date,latitude:mapRegion.latitude,longitude:mapRegion.longitude};
+      firebase.database().ref("/").child("complain").push(payload).then((successf)=>{
+          alert("Your order has been placed ")
+          this.setState({
+              address:'',
+              category:''
+            })
+        }).catch((err)=>{
+            alert(err)
+          })
+      console.log(payload,"payload");
+    // const data = Object.assign(obj, payload);
+
     } 
     render() {
+
+        let { category,address} = this.state;
+        let disable = !(category && address);
         return (
+                <ImageBackground style={{ flex: 1 }} source={require('../../assets/images/fmbg.jpg')}>
             <ScrollView>
 
           
@@ -119,33 +150,9 @@ export default class Dashboard extends Component {
 
                 </View>
                 </View>
-                <ImageBackground style={{ flex: 1 }} source={require('../../assets/images/fmbg.jpg')}>
                 <View style={DashboardStyle.textdev}>
-                <TextField
-                        label = 'Name'
-                        tintColor = '#ffff'
-                        textColor = '#ffff'
-                        baseColor = '#ffff'
-                        value={this.state.name}
-                        onChangeText={this.onChange.bind(this, 'name')}
-                    />
-                    <TextField
-                        label='Phone'
-                        keyboardType="phone-pad"
-                        tintColor = '#ffff'
-                        textColor = '#ffff'
-                        baseColor = '#ffff'
-                        value={this.state.phone}
-                        onChangeText={this.onChange.bind(this, 'phone')}
-                    />
-                    <TextField
-                        label='Address'
-                        tintColor = '#ffff'
-                        textColor = '#ffff'
-                        baseColor = '#ffff'
-                        value={this.state.address}
-                        onChangeText={this.onChange.bind(this, 'address')}
-                    />
+         
+                   
                     <View style={{color:'#ffff',borderBottomColor: '#ffff', borderBottomWidth: 0.5}}>
 
                     <Picker style={{color:'#ffff',margin:0,padding:0}} selectedValue = {this.state.category} onValueChange = {this.categoryfun}>
@@ -156,7 +163,15 @@ export default class Dashboard extends Component {
             </Picker>
                     </View>
                             
-                        <TouchableOpacity onPress={()=>{this.submit()}} style={DashboardStyle.ButtonStyle}
+                    <TextField
+                        label='Address'
+                        tintColor = '#ffff'
+                        textColor = '#ffff'
+                        baseColor = '#ffff'
+                        value={this.state.address}
+                        onChangeText={this.onChange.bind(this, 'address')}
+                    />
+                        <TouchableOpacity disabled={disable} onPress={()=>{this.submit()}} style={DashboardStyle.ButtonStyle}
                             >
                                 <Text style={DashboardStyle.buttomText}>
                                     Book Now
@@ -167,10 +182,10 @@ export default class Dashboard extends Component {
                             >
                             </TouchableOpacity>
                     </View>
-                </ImageBackground>
                 </View>
 
                 </ScrollView>
+                </ImageBackground>
             
         );
     }

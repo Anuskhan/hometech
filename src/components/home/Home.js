@@ -25,6 +25,7 @@ export default class Home extends Component {
     }
 
     componentDidMount(){
+        
         // PushNotification.localNotificationSchedule({
         //     //... You can use all the options from localNotifications
         //     vibrate: true, // (optional) default: true

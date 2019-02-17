@@ -8,9 +8,15 @@ export default EventCreateStyle = StyleSheet.create({
     },
     heading: {
         textAlign:'center',
-        fontSize:24,
-        color:'black',
-        paddingVertical:10
+        fontSize:20,
+        color:'#053173',
+        paddingVertical:10,
+        fontWeight: "bold"
+    },
+    dev: {
+       backgroundColor:"#ffff",
+       borderRadius:10,
+       marginTop:4
     },
     pickerView: {
         marginTop: 20,

@@ -108,7 +108,7 @@ export const MainStack = StackNavigator({
     },
    
 }, {
-        initialRouteName: 'Dashboard',
+        initialRouteName: 'EventCreate',
         navigationOptions: {
             headerTitle: <View style={styles.headerLogoContainer}>
                 <Image style={styles.headerLogoImage} source={require('../../assets/images/background.jpg')} />

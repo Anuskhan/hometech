@@ -19,6 +19,10 @@ export default EventStyle = StyleSheet.create({
         color: '#c22627',
         fontSize: 20
     }, 
+    delbtnEdit: {
+        color: 'blue',
+        fontSize: 20
+    }, 
     delbtn: {
         backgroundColor: 'white',
         flex: 1,
@@ -38,7 +42,7 @@ export default EventStyle = StyleSheet.create({
         paddingHorizontal:15,
         marginTop:10,
         marginHorizontal:10,
-        borderRadius: 20,
+        borderRadius: 10,
         flex:1
         
     } ,
@@ -48,8 +52,7 @@ export default EventStyle = StyleSheet.create({
         marginRight:15,
         fontSize:18,
         color: '#053173',
-        justifyContent:'center',
-        alignItems:'center',
+        fontWeight: 'bold'
       
     },
 });

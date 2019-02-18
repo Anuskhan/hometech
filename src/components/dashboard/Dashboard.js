@@ -5,7 +5,7 @@ import { TextField } from 'react-native-material-textfield';
 import DashboardStyle from './DashboardStyle';
 import firebase from "firebase";
 import moment from "moment";
-
+// main page map waala 
 
 import {
     Text,
@@ -31,7 +31,9 @@ export default class Dashboard extends Component {
             name:'',
             phone:'',
             address:'',
-            category:''
+            category:'',
+            arr:[],
+
         }
     }
 
@@ -58,7 +60,16 @@ export default class Dashboard extends Component {
     }
 
     componentDidMount(){
-     
+        var array = [];
+   
+        firebase.database().ref('category').on('child_added', snap => {
+            obj = snap.val();
+            obj.key = snap.key
+            array.push(obj);
+            this.setState({
+              arr: array,
+            })
+          }) 
     //    this.checkApi();
     LocationServicesDialogBox.checkLocationServicesIsEnabled({
         message: "<h2>Use Location ?</h2>This app wants to change your device settings:<br/><br/>Use GPS, Wi-Fi, and cell network for location<br/><br/><a href='#'>Learn more</a>",
@@ -100,7 +111,7 @@ export default class Dashboard extends Component {
                phone: params.phone,
             })
             console.log(this.state.name,"item")
-       }
+       }    
     }
  
     onChange(name, val) {
@@ -157,9 +168,15 @@ export default class Dashboard extends Component {
 
                     <Picker style={{color:'#ffff',margin:0,padding:0}} selectedValue = {this.state.category} onValueChange = {this.categoryfun}>
                <Picker.Item label = "Category"  />
-               <Picker.Item label = "Steve" value = "steve" />
-               <Picker.Item label = "Ellen" value = "ellen" />
-               <Picker.Item label = "Maria" value = "maria" />
+               {
+                    this.state.arr.map((value, index) => {
+                    return (
+                        <Picker.Item label ={value.category} value = {value.category}/>
+                        
+                    );
+                    })
+                }
+
             </Picker>
                     </View>
                             
@@ -177,10 +194,7 @@ export default class Dashboard extends Component {
                                     Book Now
                  </Text>
                             </TouchableOpacity>
-                            <TouchableOpacity style={DashboardStyle.TouchableOpacityStyle}
-                                
-                            >
-                            </TouchableOpacity>
+                          
                     </View>
                 </View>
 

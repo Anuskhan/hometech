@@ -28,8 +28,9 @@ export default class DrawerItemsComponent extends Component<{}> {
         return (
             <View style={DrawerItemsComponentStyle.drawerContainer}>
                 <ImageBackground style={DrawerItemsComponentStyle.drawerBackgroundImage} source={require('../../../assets/images/background.jpg')}>
-                <Image style={DrawerItemsComponentStyle.drawerHeaderImage}
-                    source={require('../../../assets/images/logo.png')} />
+                <TouchableOpacity onPress={() => { this.props.navigation.navigate("Signup") }}>
+                <Image  style={DrawerItemsComponentStyle.drawerHeaderImage}
+                    source={require('../../../assets/images/logo.png')} /></TouchableOpacity>
                     <ScrollView>
                         <View style={DrawerItemsComponentStyle.drawerList}>
                             <TouchableOpacity style={DrawerItemsComponentStyle.drawerListItem} onPress={(nextRouteName) => { this.navigationScreenFunction('Dashboard') }} activeOpacity={0.6}>

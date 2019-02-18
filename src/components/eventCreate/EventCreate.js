@@ -7,6 +7,7 @@ import DashboardStyle from '../dashboard/DashboardStyle';
 import Swipeable from 'react-native-swipeable';
 
 import firebase from "firebase";
+// Category add Add page
 
 export default class EventCreate extends Component {
     constructor() {
@@ -40,12 +41,10 @@ export default class EventCreate extends Component {
         array.push(obj);
         this.setState({
           arr: array,
-          load:false
+          load:false,
+          cat:''
         })
       })  
-
-
-   
    }
 
 

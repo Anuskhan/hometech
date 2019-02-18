@@ -10,7 +10,7 @@ import {
     ImageBackground
 } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-
+//user loagin
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import LoginStyle from './LoginStyle';
 
@@ -86,13 +86,7 @@ login=()=>{
                                     LOG IN
                  </Text>
                             </TouchableOpacity>
-                            {/* <TouchableOpacity style={LoginStyle.TouchableOpacityStyle}
-                                onPress={() => { this.props.navigation.navigate("Signup") }}
-                            >
-                                <Text style={LoginStyle.textColor} >
-                                    Create new account
-                 </Text>
-                            </TouchableOpacity> */}
+                          
                         </View>
                     </View>
                 </ScrollView>

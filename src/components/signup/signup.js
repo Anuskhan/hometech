@@ -25,6 +25,31 @@ export default class SignUp extends Component<{}> {
     onChange(name, val){
         this.setState({[name]: val})
     }
+    adminLogin=()=>{
+        
+            if(this.state.email!==""&&this.state.password!==""){
+            let obj={
+              email:this.state.email,
+              password:this.state.password,
+             
+            }
+          
+            firebase.auth().signInWithEmailAndPassword(obj.email,obj.password)
+            .then((suc)=>{
+              alert("LogIn success")
+                    this.props.navigation.navigate('Event')
+            })
+            .catch((err)=>{
+              alert(err)
+            })
+          }
+          else{
+          alert("please fill both field!!!")
+            
+          
+          }
+
+    }
 
     render() {
         return (
@@ -54,23 +79,14 @@ export default class SignUp extends Component<{}> {
                         placeholder="Password"
                         value={this.state.password}
                         />
-                         {/* <Ionicons color='gray' size={24} name="ios-lock-outline"/> */}
+                         {/* <Ionicons color='gray' size={24} name="ios-search-outline"/> */}
                         </View>
-                 <View style={signUpStyle.TextInputView}>
-                    <TextInput underlineColorAndroid='transparent'
-                        style={signUpStyle.TextInputStyle}
-                        placeholderTextColor="#b2b2b2" 
-                        onChange={this.onChange.bind(this, 'password')}
-                        placeholder="confirm Password"
-                        value={this.state.password}
-                        />
-                         {/* <Ionicons color='gray' size={24} name="ios-lock-outline"/> */}
-                        </View>
+                
                    
                     <TouchableOpacity  style={signUpStyle.ButtonStyle}>
     
                         <Text style={signUpStyle.ButtonText}>
-                           SINGUP
+                           Admin Login
                  </Text>
                     </TouchableOpacity>
                   

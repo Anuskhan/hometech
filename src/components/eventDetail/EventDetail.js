@@ -114,7 +114,6 @@
                             <View style={EventDetailStyle.cardListItem}>
                                 <Text style={EventDetailStyle.cardListItemTitle}>Phone : {phone}</Text>
                                 <TouchableOpacity style={EventDetailStyle.listItemDetailIconButton} onPress={() => Communications.phonecall(phone, true)}>
-                    {/* <Icon name="ios-call" style={EventDetailStyle.listItemDetailIcon} /> */}
                     <Image  style={EventDetailStyle.listItemDetailIcon} source={require('../../assets/images/phone.png')}/>
                 </TouchableOpacity> 
                             </View>

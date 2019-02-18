@@ -9,6 +9,8 @@ import {
     Button,
     ImageBackground
 } from 'react-native';
+import firebase from "firebase";
+
 import Icon from 'react-native-vector-icons/dist/FontAwesome';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import signUpStyle from './signupStyle';
@@ -37,7 +39,7 @@ export default class SignUp extends Component<{}> {
             firebase.auth().signInWithEmailAndPassword(obj.email,obj.password)
             .then((suc)=>{
               alert("LogIn success")
-                    this.props.navigation.navigate('Event')
+                    this.props.navigation.navigate('Events')
             })
             .catch((err)=>{
               alert(err)
@@ -52,6 +54,8 @@ export default class SignUp extends Component<{}> {
     }
 
     render() {
+        let { password,email} = this.state;
+        let disable = !(password && email);
         return (
             <ImageBackground style={{ flex: 1 }} source={require('../../assets/images/background.jpg')}>
                     <ScrollView>
@@ -66,24 +70,25 @@ export default class SignUp extends Component<{}> {
                  <TextInput underlineColorAndroid='transparent'
                         style={signUpStyle.TextInputStyle}
                         placeholder="Email"  placeholderTextColor="#b2b2b2" 
-                        onChange={this.onChange.bind(this, 'email')}
-                        value={this.state.email}
+                        onChangeText={this.onChange.bind(this, 'email')}
+                        value={email}
                     />
                    {/* <Ionicons color='gray' size={24} name="ios-mail-outline"/> */}
                  </View>
                  <View style={signUpStyle.TextInputView}>
                     <TextInput underlineColorAndroid='transparent'
                         style={signUpStyle.TextInputStyle}
+                        secureTextEntry={true} 
                         placeholderTextColor="#b2b2b2" 
-                        onChange={this.onChange.bind(this, 'password')}
+                        onChangeText={this.onChange.bind(this, 'password')}
                         placeholder="Password"
-                        value={this.state.password}
+                        value={password}
                         />
                          {/* <Ionicons color='gray' size={24} name="ios-search-outline"/> */}
                         </View>
                 
                    
-                    <TouchableOpacity  style={signUpStyle.ButtonStyle}>
+                    <TouchableOpacity  disabled={disable}  style={signUpStyle.ButtonStyle} onPress={() => {this.adminLogin()}}>
     
                         <Text style={signUpStyle.ButtonText}>
                            Admin Login

@@ -22,7 +22,7 @@ export default EventDetailStyle = StyleSheet.create({
         borderRadius: Platform.OS === 'ios' ? 32/2 : 32,
         alignItems: 'center',
         justifyContent: 'center',
-        marginLeft:20
+        marginLeft:"30%"
 
     },
     listItemDetailIcon: {

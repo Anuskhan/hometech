@@ -6,6 +6,9 @@
     import DashboardStyle from '../dashboard/DashboardStyle';
     import EventDetailStyle from './EventDetailStyle';
     import firebase from "firebase";
+    import Communications from 'react-native-communications';
+    import Icon from 'react-native-vector-icons/Ionicons';
+
     // complain detailss
     
     import {
@@ -32,6 +35,7 @@
                 address:'',
                 category:'',
                 arr:[],
+                date:""
     
             }
         }
@@ -54,7 +58,8 @@
                 name:item.name,
                 phone:item.phone,
                 address:item.address,
-                complainType:item.category
+                complainType:item.category,
+                date:item.date
               });
        
     }
@@ -64,8 +69,7 @@
      
         render() {
     
-            let { name,category,address,phone} = this.state;
-            let disable = !(category && address);
+            let { name,category,address,phone,date} = this.state;
             return (
                     <ImageBackground style={{ flex: 1 }} source={require('../../assets/images/fmbg.jpg')}>
                 <ScrollView>
@@ -85,15 +89,42 @@
                     </View>
                     </View>
                     
-                    </View>
-                    <View style={EventDetailStyle.listItemDetail}>
-                    {name? <Text style={EventDetailStyle.listItemSubText}>{name}</Text> : null}
-                    {address ? <Text style={EventDetailStyle.listItemSubText}>{address}</Text> : null}
-                    <Text style={EventDetailStyle.listItemText}>category</Text>
-                </View>
-                {phone ? <TouchableOpacity style={EventDetailStyle.listItemDetailIconButton} onPress={() => Communications.phonecall(phone, true)}>
-                    <Icon name="ios-call" style={EventDetailStyle.listItemDetailIcon} />
-                </TouchableOpacity> : null}
+                  <View style={EventDetailStyle.card}>
+                     
+                        <View style={EventDetailStyle.cardContainer}>
+                            
+                            <View style={EventDetailStyle.cardListItem}>
+                                <Text style={EventDetailStyle.cardListItemTitle}>Name : </Text>
+                                <Text style={EventDetailStyle.cardListItemText}>{name}</Text>
+                            </View>
+                            
+                            <View style={EventDetailStyle.cardListItem}>
+                                <Text style={EventDetailStyle.cardListItemTitle}>Address : </Text>
+                                <Text style={EventDetailStyle.cardListItemText}>{address}</Text>
+                            </View>
+                            
+                            <View style={EventDetailStyle.cardListItem}>
+                                <Text style={EventDetailStyle.cardListItemTitle}>Category : </Text>
+                                <Text style={EventDetailStyle.cardListItemText}>{category}</Text>
+                            </View>
+                            <View style={EventDetailStyle.cardListItem}>
+                                <Text style={EventDetailStyle.cardListItemTitle}>Date : </Text>
+                                <Text style={EventDetailStyle.cardListItemText}>{date}</Text>
+                            </View>
+                            <View style={EventDetailStyle.cardListItem}>
+                                <Text style={EventDetailStyle.cardListItemTitle}>Phone : {phone}</Text>
+                                <TouchableOpacity style={EventDetailStyle.listItemDetailIconButton} onPress={() => Communications.phonecall(phone, true)}>
+                    {/* <Icon name="ios-call" style={EventDetailStyle.listItemDetailIcon} /> */}
+                    <Image  style={EventDetailStyle.listItemDetailIcon} source={require('../../assets/images/phone.png')}/>
+                </TouchableOpacity> 
+                            </View>
+
+                           
+
+
+                        </View>
+                        </View>
+                        </View>
                     </ScrollView>
                     </ImageBackground>
                 

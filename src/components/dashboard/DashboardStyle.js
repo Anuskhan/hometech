@@ -8,7 +8,7 @@ export default DashboardStyle = StyleSheet.create({
         height:'60%',
     },
     TextInputStyle: {
-       flex:1,       
+               
        color:'grey',
        marginRight:10
     },

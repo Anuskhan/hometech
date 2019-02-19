@@ -12,7 +12,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import DrawerItemsComponentStyle from './DrawerItemsComponentStyle';
 import { NavigationActions } from 'react-navigation';
-export default class DrawerItemsComponent extends Component<{}> {
+export default class DrawerItemsAdmin extends Component<{}> {
     navigationScreenFunction = (nextRouteName) => {
         this.props.navigation.dispatch(NavigationActions.reset({
             index: 0,
@@ -22,9 +22,9 @@ export default class DrawerItemsComponent extends Component<{}> {
     }
 
     render() {
-        console.log(this.props.screenProps.check, 'screen')
-        var check = this.props.screenProps.check;
-        let { navigation } = this.props;
+        // console.log(this.props.screenProps.check, 'screen')
+        // var check = this.props.screenProps.check;
+        // let { navigation } = this.props;
         return (
             <View style={DrawerItemsComponentStyle.drawerContainer}>
                 <ImageBackground style={DrawerItemsComponentStyle.drawerBackgroundImage} source={require('../../../assets/images/background.jpg')}>
@@ -35,12 +35,12 @@ export default class DrawerItemsComponent extends Component<{}> {
                         <View style={DrawerItemsComponentStyle.drawerList}>
                             <TouchableOpacity style={DrawerItemsComponentStyle.drawerListItem} onPress={(nextRouteName) => { this.navigationScreenFunction('Dashboard') }} activeOpacity={0.6}>
                                 <Text style={[DrawerItemsComponentStyle.drawerListItemText]}>
-                                    <Text style={{ justifyContent: 'flex-end' }}>Home</Text>
+                                    <Text style={{ justifyContent: 'flex-end' }}>Dashborad</Text>
                                 </Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={DrawerItemsComponentStyle.drawerListItem} onPress={(nextRouteName) => { this.navigationScreenFunction('Events') }} activeOpacity={0.6}>
                                 <Text style={[DrawerItemsComponentStyle.drawerListItemText]}>
-                                    Services Rate
+                                    Complain
                               </Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={DrawerItemsComponentStyle.drawerListItem} onPress={(nextRouteName) => { this.navigationScreenFunction('Speaker') }} activeOpacity={0.6}>

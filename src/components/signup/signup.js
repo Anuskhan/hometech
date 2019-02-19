@@ -29,7 +29,6 @@ export default class SignUp extends Component<{}> {
     }
     adminLogin=()=>{
         
-            if(this.state.email!==""&&this.state.password!==""){
             let obj={
               email:this.state.email,
               password:this.state.password,
@@ -39,17 +38,15 @@ export default class SignUp extends Component<{}> {
             firebase.auth().signInWithEmailAndPassword(obj.email,obj.password)
             .then((suc)=>{
               alert("LogIn success")
-                    this.props.navigation.navigate('Events')
+              this.props.screenProps.navfun(false)
+              this.props.navigation.navigate("Dashboard") 
+            // this.props.navigation.navigate('Events')
             })
             .catch((err)=>{
               alert(err)
             })
-          }
-          else{
-          alert("please fill both field!!!")
-            
           
-          }
+         
 
     }
 

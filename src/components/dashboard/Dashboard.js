@@ -100,7 +100,6 @@ export default class Dashboard extends Component {
     });
     this.getCurrentPosition();
 
-       this.props.screenProps.logout(true)
 
        let { params } = this.props.navigation.state;
       
@@ -152,6 +151,7 @@ export default class Dashboard extends Component {
                   
                 <View style={styles.mapContainer}>    
                 <View style={styles.container}>
+                
                   <MapView
             region={this.state.mapRegion}
             style={styles.map}
@@ -165,8 +165,65 @@ export default class Dashboard extends Component {
          
                    
                     <View style={{color:'#ffff',borderBottomColor: '#ffff', borderBottomWidth: 0.5}}>
+                    <ScrollView
+              horizontal={true}
+              style={{
+                marginVertical: 10,
+                
+                paddingVertical: 0,
+                width: "100%"
+              }}>
 
-                    <Picker style={{color:'#ffff',margin:0,padding:0}} selectedValue = {this.state.category} onValueChange = {this.categoryfun}>
+
+              <TouchableOpacity onPress={()=>{  this.setState({ category:"AC REPAIR" })}}
+                style={(category=="AC REPAIR")?styles.opttest:styles.opt}>
+                <Image  style={styles.img} source={require('../../assets/images/1.png')}/>
+                <Text style={styles.txt}>AC REPAIR</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity onPress={()=>{  this.setState({ category:"ELECTRICIAN" })}}
+                style={(category=="ELECTRICIAN")?styles.opttest:styles.opt}>
+                <Image  style={styles.img} source={require('../../assets/images/2.png')}/>
+
+                <Text  style={styles.txt}>ELECTRICIAN</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity onPress={()=>{  this.setState({ category:"REFRIGERATION" })}}
+             style={(category=="REFRIGERATION")?styles.opttest:styles.opt}>
+                <Image  style={styles.img} source={require('../../assets/images/3.png')}/>
+
+                <Text  style={styles.txt}>REFRIGERATION</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity onPress={()=>{this.setState({ category:"PAINTER" })}}
+              style={(category=="PAINTER")?styles.opttest:styles.opt}>
+                <Image  style={styles.img} source={require('../../assets/images/5.png')}/>
+
+                <Text  style={styles.txt} >PAINTER </Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity onPress={()=>{  this.setState({ category:"PLUMBER" })}}
+               style={(category=="PLUMBER")?styles.opttest:styles.opt}>
+                <Image  style={styles.img} source={require('../../assets/images/6.png')}/>
+
+                <Text  style={styles.txt} >PLUMBER</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity onPress={()=>{  this.setState({ category:"MASON" })}}
+               style={(category=="MASON")?styles.opttest:styles.opt}>
+                <Image  style={styles.img} source={require('../../assets/images/7.png')}/>
+
+                <Text  style={styles.txt}>MASON </Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={()=>{  this.setState({ category:"GENERATOR" })}}
+               style={(category=="GENERATOR")?styles.opttest:styles.opt}>
+                <Image  style={styles.img} source={require('../../assets/images/b1.png')}/>
+
+                <Text  style={styles.txt}>GENERATOR</Text>
+              </TouchableOpacity>
+
+            </ScrollView>
+                    {/* <Picker style={{color:'#ffff',margin:0,padding:0}} selectedValue = {this.state.category} onValueChange = {this.categoryfun}>
                <Picker.Item label = "Category"  />
                {
                     this.state.arr.map((value, index) => {
@@ -177,7 +234,7 @@ export default class Dashboard extends Component {
                     })
                 }
 
-            </Picker>
+            </Picker> */}
                     </View>
                             
                     <TextField
@@ -197,7 +254,7 @@ export default class Dashboard extends Component {
                           
                     </View>
                 </View>
-
+               
                 </ScrollView>
                 </ImageBackground>
             
@@ -221,5 +278,32 @@ const styles = StyleSheet.create({
         justifyContent: 'flex-end',
         alignItems: 'center',
       },
+      img:{
+        width:32,
+        height:32,
+        alignItems: 'center',
+        marginBottom:4,
+        justifyContent:'center',
+        marginLeft:"20%"
+      },
+      txt:{
+      color:"white"
+      },
+      opt:{
+        marginHorizontal: 10,
+        flex:1,
+         justifyContent:'center',
+         alignContent:'center',
+
+      },
+      opttest:{
+        marginHorizontal: 10,
+        flex:1,
+         justifyContent:'center',
+         alignContent:'center',
+         marginBottom:2,
+        borderBottomWidth:2,
+        borderBottomColor:'red'
+      }
     });
 

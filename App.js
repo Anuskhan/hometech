@@ -7,25 +7,32 @@ import {
 } from 'react-native';
 // import SplashScreen from 'react-native-splash-screen';
 import { Drawer } from './src/components/routing/route'
+import {AdminDrawer} from './src/components/routing/route'
 import OfflineNotice from './src/components/offlinenoti';
 
 export default class App extends Component<{}> {
   constructor(props){
     super(props);
     this.state={
-      logedIn:false
+      checkNav:true
     }
   }
-  logout(value){
+  navfun(value){
     console.log(value,"value")
-    // this.setState({logedIn: value})
+    alert(value)
+    this.setState({checkNav: value})
   }
   
   
   render() {
     return (
         <View style={styles.container}>
-         <Drawer screenProps={{logout:this.logout.bind(this)}}/>
+       {  (this.state.checkNav) ?
+          <Drawer screenProps={{navfun:this.navfun.bind(this)}}/>
+          :
+          
+          <AdminDrawer />
+        }
          <OfflineNotice/>
         </View>
     );

@@ -35,26 +35,27 @@ export default class DrawerItemsComponent extends Component<{}> {
                         <View style={DrawerItemsComponentStyle.drawerList}>
                             <TouchableOpacity style={DrawerItemsComponentStyle.drawerListItem} onPress={(nextRouteName) => { this.navigationScreenFunction('Dashboard') }} activeOpacity={0.6}>
                                 <Text style={[DrawerItemsComponentStyle.drawerListItemText]}>
-                                    <Text style={{ justifyContent: 'flex-end' }}>Home</Text>
+                                    <Text style={{ justifyContent: 'flex-end' }}>Dashborad</Text>
                                 </Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={DrawerItemsComponentStyle.drawerListItem} onPress={(nextRouteName) => { this.navigationScreenFunction('Events') }} activeOpacity={0.6}>
                                 <Text style={[DrawerItemsComponentStyle.drawerListItemText]}>
-                                    Services Rate
+                                    Complains
                               </Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={DrawerItemsComponentStyle.drawerListItem} onPress={(nextRouteName) => { this.navigationScreenFunction('Speaker') }} activeOpacity={0.6}>
                                 <Text style={[DrawerItemsComponentStyle.drawerListItemText]}>
-                                    List
+                                    Services Rate
                               </Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={DrawerItemsComponentStyle.drawerListItem} onPress={(nextRouteName) => { this.navigationScreenFunction('Home') }} activeOpacity={0.6}>
                                 <Text style={[DrawerItemsComponentStyle.drawerListItemText]}>
-                                    Home
+                                    Category Add
                               </Text>
                             </TouchableOpacity>
 
-                          
+                        
+
                                     <TouchableOpacity style={[DrawerItemsComponentStyle.drawerListItem, DrawerItemsComponentStyle.logoutButton]} activeOpacity={0.6}
                                     // onPress={(nextRouteName)=>{this.props.navigation.navigate('Login')}}
                                     >

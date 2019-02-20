@@ -11,8 +11,6 @@ import {
 } from 'react-native';
 import firebase from "firebase";
 
-import Icon from 'react-native-vector-icons/dist/FontAwesome';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import signUpStyle from './signupStyle';
 
 export default class SignUp extends Component<{}> {

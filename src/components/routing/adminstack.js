@@ -12,7 +12,6 @@ import SpeakerCreate from '../speakerCreate/SpeakerCreate';
 import SignUp from '../signup/signup';
 import React, { Component } from 'react';
 import { NavigationActions } from 'react-navigation';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
 

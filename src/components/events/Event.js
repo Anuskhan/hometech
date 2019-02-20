@@ -22,20 +22,23 @@ export default class Events extends Component {
             currentlyOpenSwipeable.recenter();
         }
     };
-    componentWillMount(){
-            var array = [];
-            firebase.database().ref("/").child("complain").on('child_added', snap => {
-              obj = snap.val();
-              obj.key = snap.key
-              console.log(obj,"obxxx")
-              array.push(obj);
-              this.setState({
-        
-                arr: array,
-                load:false
-              })
+    fatch=()=>{
+        var array = [];
+        firebase.database().ref("/").child("complain").on('child_added', snap => {
+          obj = snap.val();
+          obj.key = snap.key
+          console.log(obj,"obxxx")
+          array.push(obj);
+          this.setState({
+    
+            arr: array,
+            load:false
+          })
 
-            })  
+        })  
+    }
+    componentWillMount(){
+         this.fatch()
     }
     renderHeader = () => {
         return (
@@ -51,6 +54,7 @@ export default class Events extends Component {
     deleteCat=(id)=>{
         firebase.database().ref("/").child("complain").child(id).remove().then(()=>{
             alert("Delete Category Successfully")
+            this.fatch()
         })
     }
     renderItem({ item, index }) {

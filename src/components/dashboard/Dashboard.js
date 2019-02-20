@@ -123,6 +123,14 @@ export default class Dashboard extends Component {
       // let obj = { dateOfBirth, religion, email, gender, maritaStatus };
       
       let {  name,phone,address,category,mapRegion} = this.state;
+      if(name=="" && phone=="" ){
+        alert('Login first please')
+        this.props.navigation.navigate("Login") 
+
+    }
+    else{
+        
+    
       let date =moment().format(" Do MMM YY");
       let payload = {name,phone,address,category,date,latitude:mapRegion.latitude,longitude:mapRegion.longitude};
       firebase.database().ref("/").child("complain").push(payload).then((successf)=>{
@@ -134,9 +142,7 @@ export default class Dashboard extends Component {
         }).catch((err)=>{
             alert(err)
           })
-      console.log(payload,"payload");
-    // const data = Object.assign(obj, payload);
-
+        }
     } 
     render() {
 

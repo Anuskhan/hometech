@@ -7,8 +7,6 @@ import {
     TouchableOpacity,
     ImageBackground
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
-import Ionicons from 'react-native-vector-icons/Ionicons';
 
 import DrawerItemsComponentStyle from './DrawerItemsComponentStyle';
 import { NavigationActions } from 'react-navigation';

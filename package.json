@@ -18,7 +18,6 @@
     "react-native-maps-directions": "^1.6.0",
     "react-native-material-textfield": "^0.12.0",
     "react-native-swipeable": "^0.6.0",
-    "react-native-vector-icons": "^5.0.0",
     "react-navigation": "1.5.2"
   },
   "devDependencies": {

@@ -7,7 +7,6 @@
     import EventDetailStyle from './EventDetailStyle';
     import firebase from "firebase";
     import Communications from 'react-native-communications';
-    import Icon from 'react-native-vector-icons/Ionicons';
 
     // complain detailss
     

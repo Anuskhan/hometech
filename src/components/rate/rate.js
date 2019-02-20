@@ -48,9 +48,10 @@ export default class Rate extends Component {
              
             <TouchableOpacity activeOpacity={0.5} style={EventStyle.listItem} >
                 <View style={EventStyle.listItemDetail}>
-                    <Text style={{fontSize:17,color:"black"}}>Title :{item.title}</Text>
-                   <Text >Rate:{item.rate}</Text> 
-                   <Text>Detail:{item.detail}</Text> 
+                    <Text style={{fontSize:18,color:"black",fontWeight:'bold'}}>Service Name : {item.title}</Text>
+                    <Text style={{fontSize:17,color:"black"}}>Rate : {item.rate} RS</Text>
+                    <Text style={{fontSize:17,color:"black"}}>Detail : {item.detail}</Text>
+             
                 </View>
             </TouchableOpacity>
            

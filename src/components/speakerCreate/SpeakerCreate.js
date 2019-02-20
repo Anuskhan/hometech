@@ -19,7 +19,7 @@ componentWillMount(){
       firebase.auth().signOut().then(()=>{
 
         nav.navigate("Login") ;
-        //  src.navfun(true);
+         src.navfun(true);
          
 
       })

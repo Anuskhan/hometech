@@ -9,9 +9,7 @@ import {
     Button,
     ImageBackground
 } from 'react-native';
-import Icon from 'react-native-vector-icons/Ionicons';
 //user loagin
-import Ionicons from 'react-native-vector-icons/Ionicons';
 import LoginStyle from './LoginStyle';
 
 export default class Login extends Component<{}> {
@@ -22,17 +20,13 @@ export default class Login extends Component<{}> {
             phone: ""
         }
     }
-componentWillMount(){
-    // this.props.screenProps.navfun(true)
-    this.props.screenProps.navfun(true);
 
-}
     onChange(name, val) {
         this.setState({ [name]: val })
-        
     }
 login=()=>{
     let { name,phone} = this.state;
+   
     let disable = !(!name && !phone);
 
     if(disable){

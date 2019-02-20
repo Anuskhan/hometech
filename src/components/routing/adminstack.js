@@ -3,18 +3,21 @@ import { StyleSheet, Image, View, Text } from 'react-native';
 import Login from '../login/Login';
 import Dashboard from '../dashboard/Dashboard';
 import Home from '../home/Home';
+import servRate from '../home/servRate';
 import Events from '../events/Event';
 import EventDetail from '../eventDetail/EventDetail';
 import EventCreate from '../eventCreate/EventCreate';
 import Speaker from '../speaker/Speaker';
 import SpeakerCreate from '../speakerCreate/SpeakerCreate';
-import SpeakerDetail from '../speakerDetails/SpeakerDetail';
 import SignUp from '../signup/signup';
 import React, { Component } from 'react';
 import { NavigationActions } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 
+
+import Services from '../services/services';
+import Rate from '../rate/rate';
 
 const styles = StyleSheet.create({
     test: {
@@ -70,8 +73,14 @@ export const AdminMainStack = StackNavigator({
             header: null,
         }
     },
-    SpeakerDetail: {
-        screen: SpeakerDetail,
+    Rate: {
+        screen: Rate,
+        navigationOptions: {
+            header: null,
+        }
+    },
+    Services: {
+        screen: Services,
         navigationOptions: {
             header: null,
         }
@@ -102,6 +111,12 @@ export const AdminMainStack = StackNavigator({
     },
     Login: {
         screen: Login,
+        navigationOptions: {
+            header: null,
+        }
+    },
+    servRate: {
+        screen: servRate,
         navigationOptions: {
             header: null,
         }

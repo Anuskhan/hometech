@@ -22,7 +22,11 @@ export default class Login extends Component<{}> {
             phone: ""
         }
     }
+componentWillMount(){
+    // this.props.screenProps.navfun(true)
+    this.props.screenProps.navfun(true);
 
+}
     onChange(name, val) {
         this.setState({ [name]: val })
         
@@ -30,9 +34,7 @@ export default class Login extends Component<{}> {
 login=()=>{
     let { name,phone} = this.state;
     let disable = !(!name && !phone);
-    console.log(disable,"name")
-    console.log(name,"name")
-    console.log(phone,"namPPPe")
+
     if(disable){
         let item = {
            name,phone
@@ -48,7 +50,6 @@ login=()=>{
     render() {
         let { name,phone} = this.state;
         let disable = !(name && phone);
-        // console.log(disable,'ssdsd')
         return (
             <ImageBackground style={{ flex: 1 }} source={require('../../assets/images/background.jpg')}>
                 <ScrollView>

@@ -51,6 +51,7 @@
         deleteCat=(id)=>{
             firebase.database().ref("/").child("serviceRate").child(id).remove().then(()=>{
                 alert("Delete Category Successfully")
+                this.props.navigation.navigate("Speaker")
             })
         }
         renderItem({ item, index }) {
@@ -68,7 +69,7 @@
                 <TouchableOpacity style={EventStyle.delbtn} onPress={()=>this.deleteCat(item.key)} >
                <Text style={EventStyle.delbtntxt}>Delete</Text>
                 </TouchableOpacity>,
-                <TouchableOpacity style={EventStyle.delbtn} onPress={()=> this.props.navigation.navigate('Home'),item} >
+                <TouchableOpacity style={EventStyle.delbtn} onPress={() => this.props.navigation.navigate('servRate', { item })}>
                <Text style={EventStyle.delbtnEdit}>Edit</Text>
                 </TouchableOpacity>
             ];
@@ -81,7 +82,7 @@
                 onRef = {ref => this.swipeable = ref}
                 onRightButtonsOpenRelease = {onOpen} onRightButtonsCloseRelease = {onClose}>
                  
-                <TouchableOpacity activeOpacity={0.5} style={EventStyle.listItem} onPress={() => this.props.navigation.navigate('Home')}>
+                <TouchableOpacity activeOpacity={0.5} style={EventStyle.listItem} >
                     <View style={EventStyle.listItemDetail}>
                         <Text style={{fontSize:17,color:"black"}}>Title :{item.title}</Text>
                        <Text >Rate:{item.rate}</Text> 

@@ -8,7 +8,7 @@ import Swipeable from 'react-native-swipeable';
 import firebase from "firebase";
 // services RATE Add page
 
-export default class Home extends Component {
+export default class servRate extends Component {
     constructor() {
         super();
         this.state = {
@@ -36,24 +36,41 @@ export default class Home extends Component {
     };
 
 
+   componentWillMount(){
+    let {item} = this.props.navigation.state.params;
+    
+    if (item) {
+              this.setState({
+             title:item.title,
+             rate:item.rate,
+             detail:item.detail,
+             update:true,
+             id:item.key
+              });
+       
+    }
+   }
 
 
-catadd=()=>{
-    let {title,rate,detail} = this.state;
+
+
+update=()=>{
+    let {title,rate,detail,id} = this.state;
     let obj={title,rate,detail}
-    firebase.database().ref("/").child("serviceRate").push(obj).then((successf)=>{
+
+    firebase.database().ref("/").child("serviceRate").child(id).set(obj).then((successf)=>{
         alert("Services Rate set !! ")
         this.setState({
             title:'',
             rate:'',
-            detail:''
+            detail:'',
+            update:false
           })
           this.props.navigation.navigate("Speaker")
       }).catch((err)=>{
           alert(err)
         })
     }
-
 
    
     render() {
@@ -95,16 +112,13 @@ catadd=()=>{
                             onChangeText={this.onChange.bind(this, 'detail')}
                         />
                 </View>
-                
-                <TouchableOpacity disabled={disable} onPress={()=>{this.catadd()}} style={DashboardStyle.ButtonStyle}
+                <TouchableOpacity disabled={disable} onPress={()=>{this.update()}} style={DashboardStyle.ButtonStyle}
                             >
                                 <Text style={DashboardStyle.buttomText}>
-                                  Services Rate Add
+                                  Update Rate 
                  </Text>
                             </TouchableOpacity>
-                    
-                
-
+                  
             </View>
            
 

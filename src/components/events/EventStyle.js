@@ -55,6 +55,16 @@ export default EventStyle = StyleSheet.create({
         fontWeight: 'bold'
       
     },
+    title: {
+        // flex:1,
+        marginRight:15,
+        fontSize:18,
+        color: '#053173',
+        fontWeight: 'bold',
+        justifyContent:'center',
+        alignItems:'center',
+      
+    },
 });
 
 

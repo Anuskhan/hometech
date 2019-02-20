@@ -23,7 +23,18 @@ export default class SignUp extends Component<{}> {
             password: ""
         }
     }
-
+componentWillMount(){
+    let nav=this.props.navigation;
+    let src=this.props.screenProps;
+    firebase.auth().onAuthStateChanged(function(user) {
+        if (user) {
+            nav.navigate("Events") 
+            src.navfun(false)
+        } else {
+            // No user is signed in.
+        }
+    });
+}
     onChange(name, val){
         this.setState({[name]: val})
     }
@@ -39,7 +50,7 @@ export default class SignUp extends Component<{}> {
             .then((suc)=>{
               alert("LogIn success")
               this.props.screenProps.navfun(false)
-              this.props.navigation.navigate("Dashboard") 
+              this.props.navigation.navigate("Events") 
             // this.props.navigation.navigate('Events')
             })
             .catch((err)=>{

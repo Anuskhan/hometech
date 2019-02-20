@@ -8,8 +8,10 @@ import EventDetail from '../eventDetail/EventDetail';
 import EventCreate from '../eventCreate/EventCreate';
 import Speaker from '../speaker/Speaker';
 import SpeakerCreate from '../speakerCreate/SpeakerCreate';
-import SpeakerDetail from '../speakerDetails/SpeakerDetail';
+// import SpeakerDetail from '../speakerDetails/SpeakerDetail';
 import SignUp from '../signup/signup';
+import Services from '../services/services';
+import Rate from '../rate/rate';
 import React, { Component } from 'react';
 import { NavigationActions } from 'react-navigation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -52,44 +54,22 @@ export const MainStack = StackNavigator({
             header: null,
         }
     },
-    Events: {
-        screen: Events,
+  
+    Rate: {
+        screen: Rate,
         navigationOptions: {
             header: null,
         }
     },
-    Speaker: {
-        screen: Speaker,
+    Services: {
+        screen: Services,
         navigationOptions: {
             header: null,
         }
     },
-    SpeakerCreate: {
-        screen: SpeakerCreate,
-        navigationOptions: {
-            header: null,
-        }
-    },
-    SpeakerDetail: {
-        screen: SpeakerDetail,
-        navigationOptions: {
-            header: null,
-        }
-    },
-    EventDetail: {
-        screen: EventDetail,
-        navigationOptions: {
-            header: null,
-        }   
-    },
-    EventCreate: {
-        screen: EventCreate,
-        navigationOptions: {
-            header: null,
-        }
-    },
-    Home: {
-        screen: Home,
+
+    Login: {
+        screen: Login,
         navigationOptions: {
             header: null,
         }
@@ -100,15 +80,17 @@ export const MainStack = StackNavigator({
             header: null,
         }
     },
-    Login: {
-        screen: Login,
+    SpeakerCreate: {
+        screen: SpeakerCreate,
         navigationOptions: {
             header: null,
         }
     },
+  
+    
    
 }, {
-        initialRouteName: 'EventCreate',
+        initialRouteName: 'Login',
         navigationOptions: {
             headerTitle: <View style={styles.headerLogoContainer}>
                 <Image style={styles.headerLogoImage} source={require('../../assets/images/background.jpg')} />

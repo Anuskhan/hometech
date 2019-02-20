@@ -33,30 +33,26 @@ export default class DrawerItemsAdmin extends Component<{}> {
                     source={require('../../../assets/images/logo.png')} /></TouchableOpacity>
                     <ScrollView>
                         <View style={DrawerItemsComponentStyle.drawerList}>
-                            <TouchableOpacity style={DrawerItemsComponentStyle.drawerListItem} onPress={(nextRouteName) => { this.navigationScreenFunction('Dashboard') }} activeOpacity={0.6}>
-                                <Text style={[DrawerItemsComponentStyle.drawerListItemText]}>
-                                    <Text style={{ justifyContent: 'flex-end' }}>Dashborad</Text>
-                                </Text>
-                            </TouchableOpacity>
+                           
                             <TouchableOpacity style={DrawerItemsComponentStyle.drawerListItem} onPress={(nextRouteName) => { this.navigationScreenFunction('Events') }} activeOpacity={0.6}>
                                 <Text style={[DrawerItemsComponentStyle.drawerListItemText]}>
-                                    Complain
+                                    Complains
                               </Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={DrawerItemsComponentStyle.drawerListItem} onPress={(nextRouteName) => { this.navigationScreenFunction('Speaker') }} activeOpacity={0.6}>
                                 <Text style={[DrawerItemsComponentStyle.drawerListItemText]}>
-                                    List
+                                Service Rate List
                               </Text>
                             </TouchableOpacity>
                             <TouchableOpacity style={DrawerItemsComponentStyle.drawerListItem} onPress={(nextRouteName) => { this.navigationScreenFunction('Home') }} activeOpacity={0.6}>
                                 <Text style={[DrawerItemsComponentStyle.drawerListItemText]}>
-                                    Home
+                                Services Rate Add
                               </Text>
                             </TouchableOpacity>
 
                           
                                     <TouchableOpacity style={[DrawerItemsComponentStyle.drawerListItem, DrawerItemsComponentStyle.logoutButton]} activeOpacity={0.6}
-                                    // onPress={(nextRouteName)=>{this.props.navigation.navigate('Login')}}
+                                    onPress={()=>{this.props.navigation.navigate('SpeakerCreate')}}
                                     >
 
                                         <Text style={[DrawerItemsComponentStyle.drawerListItemText]}>

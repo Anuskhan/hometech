@@ -19,7 +19,6 @@ export default class App extends Component<{}> {
   }
   navfun(value){
     console.log(value,"value")
-    alert(value)
     this.setState({checkNav: value})
   }
   
@@ -31,7 +30,7 @@ export default class App extends Component<{}> {
           <Drawer screenProps={{navfun:this.navfun.bind(this)}}/>
           :
           
-          <AdminDrawer />
+          <AdminDrawer screenProps={{navfun:this.navfun.bind(this)}} />
         }
          <OfflineNotice/>
         </View>

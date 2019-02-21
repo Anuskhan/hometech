@@ -34,9 +34,8 @@ login=()=>{
            name,phone
         };
         this.props.navigation.navigate("Dashboard",item) 
-     alert("yes")   
+     
     }else{
-        alert("yes")   
 
     }
     

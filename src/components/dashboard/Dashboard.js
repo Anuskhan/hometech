@@ -43,6 +43,7 @@ export default class Dashboard extends Component {
     getCurrentPosition=()=> {
         navigator.geolocation.getCurrentPosition(
             (position) => {
+                console(position.coords.latitude)
                 let region={   
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude,
@@ -118,6 +119,7 @@ export default class Dashboard extends Component {
     }  
     categoryfun = (category) => {
         this.setState({ category: category })
+        alert(category)
      }
   submit =()=>{
       // let obj = { dateOfBirth, religion, email, gender, maritaStatus };
@@ -128,10 +130,11 @@ export default class Dashboard extends Component {
         this.props.navigation.navigate("Login") 
 
     }
-    else{
+     if (!mapRegion.latitude=="" && !mapRegion.longitude==""){
         
     
       let date =moment().format(" Do MMM YY");
+
       let payload = {name,phone,address,category,date,latitude:mapRegion.latitude,longitude:mapRegion.longitude};
       firebase.database().ref("/").child("complain").push(payload).then((successf)=>{
           alert("Your order has been placed ")
@@ -146,8 +149,8 @@ export default class Dashboard extends Component {
     } 
     render() {
 
-        let { category,address} = this.state;
-        let disable = !(category && address);
+        let { category,address,mapRegion} = this.state;
+        let disable = !(category && address );
         return (
                 <ImageBackground style={{ flex: 1 }} source={require('../../assets/images/fmbg.jpg')}>
             <ScrollView>
@@ -181,47 +184,47 @@ export default class Dashboard extends Component {
               }}>
 
 
-              <TouchableOpacity onPress={()=>{  this.setState({ category:"AC REPAIR" })}}
+              <TouchableOpacity onPress={()=>{ this.categoryfun('AC REPAIR') }}
                 style={(category=="AC REPAIR")?styles.opttest:styles.opt}>
                 <Image  style={styles.img} source={require('../../assets/images/1.png')}/>
                 <Text style={styles.txt}>AC REPAIR</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={()=>{  this.setState({ category:"ELECTRICIAN" })}}
+              <TouchableOpacity onPress={()=>{ this.categoryfun('ELECTRICIAN') }}
                 style={(category=="ELECTRICIAN")?styles.opttest:styles.opt}>
                 <Image  style={styles.img} source={require('../../assets/images/2.png')}/>
 
                 <Text  style={styles.txt}>ELECTRICIAN</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={()=>{  this.setState({ category:"REFRIGERATION" })}}
+              <TouchableOpacity onPress={()=>{ this.categoryfun('REFRIGERATION') }}
              style={(category=="REFRIGERATION")?styles.opttest:styles.opt}>
                 <Image  style={styles.img} source={require('../../assets/images/3.png')}/>
 
                 <Text  style={styles.txt}>REFRIGERATION</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={()=>{this.setState({ category:"PAINTER" })}}
+              <TouchableOpacity onPress={()=>{ this.categoryfun('PAINTER') }}
               style={(category=="PAINTER")?styles.opttest:styles.opt}>
                 <Image  style={styles.img} source={require('../../assets/images/5.png')}/>
 
                 <Text  style={styles.txt} >PAINTER </Text>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={()=>{  this.setState({ category:"PLUMBER" })}}
+              <TouchableOpacity onPress={()=>{ this.categoryfun('PLUMBER') }}
                style={(category=="PLUMBER")?styles.opttest:styles.opt}>
                 <Image  style={styles.img} source={require('../../assets/images/6.png')}/>
 
                 <Text  style={styles.txt} >PLUMBER</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={()=>{  this.setState({ category:"MASON" })}}
+              <TouchableOpacity onPress={()=>{ this.categoryfun('MASON') }}
                style={(category=="MASON")?styles.opttest:styles.opt}>
                 <Image  style={styles.img} source={require('../../assets/images/7.png')}/>
 
                 <Text  style={styles.txt}>MASON </Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={()=>{  this.setState({ category:"GENERATOR" })}}
+              <TouchableOpacity onPress={()=>{ this.categoryfun('GENERATOR') }}
                style={(category=="GENERATOR")?styles.opttest:styles.opt}>
                 <Image  style={styles.img} source={require('../../assets/images/b1.png')}/>
 

@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { Text, TextInput, View, TouchableOpacity } from 'react-native';
 
-import { TextField } from 'react-native-material-textfield';
 import firebase from "firebase";
 
 export default class SpeakerCreate extends Component {
@@ -11,18 +10,15 @@ export default class SpeakerCreate extends Component {
            
         }
     }
-componentWillMount(){
-    let nav=this.props.navigation;
-    let src=this.props.screenProps;
+componentWillMount(){    
+    firebase.auth().signOut();
+    
+    this.props.navigation.navigate("Login");
+   
     this.props.screenProps.navfun(true);
-
-      firebase.auth().signOut().then(()=>{
-
-        nav.navigate("Login") ;
-         src.navfun(true);
          
 
-      })
+    
   
     }
  

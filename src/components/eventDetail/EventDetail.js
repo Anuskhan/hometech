@@ -57,7 +57,7 @@
                 name:item.name,
                 phone:item.phone,
                 address:item.address,
-                complainType:item.category,
+                category:item.category,
                 date:item.date
               });
        
@@ -75,7 +75,6 @@
     
               
                     <View >
-                      
                     <View style={styles.mapContainer}>    
                     <View style={styles.container}>
                       <MapView

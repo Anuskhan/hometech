@@ -7,6 +7,7 @@ import {
     TouchableOpacity,
     ImageBackground
 } from 'react-native';
+import firebase from "firebase";
 
 import DrawerItemsComponentStyle from './DrawerItemsComponentStyle';
 import { NavigationActions } from 'react-navigation';
@@ -50,7 +51,13 @@ export default class DrawerItemsAdmin extends Component<{}> {
 
                           
                                     <TouchableOpacity style={[DrawerItemsComponentStyle.drawerListItem, DrawerItemsComponentStyle.logoutButton]} activeOpacity={0.6}
-                                    onPress={()=>{this.props.navigation.navigate('SpeakerCreate')}}
+                                    onPress={()=>{
+                                        firebase.auth().signOut();
+    
+                                        this.props.navigation.navigate("Login");
+                                       
+                                        this.props.screenProps.navfun(true);
+                                    }}
                                     >
 
                                         <Text style={[DrawerItemsComponentStyle.drawerListItemText]}>

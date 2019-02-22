@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import  LocationServicesDialogBox from "react-native-android-location-services-dialog-box";
-import MapView from 'react-native-maps';
+import MapView , { PROVIDER_GOOGLE }  from 'react-native-maps';
 import { TextField } from 'react-native-material-textfield';
 import DashboardStyle from './DashboardStyle';
 import firebase from "firebase";
@@ -17,9 +17,6 @@ import {
     Button,
     ImageBackground
 } from 'react-native';
-// import { Container, Header, Content, Button, Text } from 'native-base';
-
-//  { Button, Card, CardActions } from 'react-native-paper';
 
 export default class Dashboard extends Component {
     constructor() {
@@ -43,7 +40,6 @@ export default class Dashboard extends Component {
     getCurrentPosition=()=> {
         navigator.geolocation.getCurrentPosition(
             (position) => {
-                console(position.coords.latitude)
                 let region={   
                 latitude: position.coords.latitude,
                 longitude: position.coords.longitude,
@@ -58,6 +54,7 @@ export default class Dashboard extends Component {
             },
             (error) => this.setState({ error: error.message }),
           );
+     
     }
 
     componentDidMount(){
@@ -88,9 +85,8 @@ export default class Dashboard extends Component {
                 let initialPosition = JSON.stringify(position);
                 this.setState({ initialPosition });
                 this.getCurrentPosition();
-                console.log(this.getCurrentPosition(),"sds")
 
-            }, error => console.log(error), { enableHighAccuracy: false, timeout: 20000, maximumAge: 1000 });
+            }, error => console.log(error), {enableHighAccuracy: true, timeout: 20000, maximumAge: 10000});
         }.bind(this)
     ).catch((error) => {
         console.log(error.message);
@@ -117,25 +113,26 @@ export default class Dashboard extends Component {
     onChange(name, val) {
         this.setState({ [name]: val })
     }  
-    categoryfun = (category) => {
-        this.setState({ category: category })
-        alert(category)
+    categoryfun = (cat) => {
+        this.setState({ category: cat })
+       
      }
   submit =()=>{
       // let obj = { dateOfBirth, religion, email, gender, maritaStatus };
       
       let {  name,phone,address,category,mapRegion} = this.state;
-      if(name=="" && phone=="" ){
+      if(!name && !phone ){
         alert('Login first please')
         this.props.navigation.navigate("Login") 
-
-    }
-     if (!mapRegion.latitude=="" && !mapRegion.longitude==""){
+      }
+    else{
+     if (!mapRegion.latitude=='' && !mapRegion.longitude==''){
         
     
-      let date =moment().format(" Do MMM YY");
+      let date=moment().format(" Do MMM YY");
 
       let payload = {name,phone,address,category,date,latitude:mapRegion.latitude,longitude:mapRegion.longitude};
+     alert(category )
       firebase.database().ref("/").child("complain").push(payload).then((successf)=>{
           alert("Your order has been placed ")
           this.setState({
@@ -146,7 +143,9 @@ export default class Dashboard extends Component {
             alert(err)
           })
         }
-    } 
+    }
+     
+}
     render() {
 
         let { category,address,mapRegion} = this.state;
@@ -162,11 +161,11 @@ export default class Dashboard extends Component {
                 <View style={styles.container}>
                 
                   <MapView
+                   provider={PROVIDER_GOOGLE}
             region={this.state.mapRegion}
             style={styles.map}
             showsUserLocation={true}
-            >
-        </MapView>
+            />
 
                 </View>
                 </View>
@@ -232,18 +231,7 @@ export default class Dashboard extends Component {
               </TouchableOpacity>
 
             </ScrollView>
-                    {/* <Picker style={{color:'#ffff',margin:0,padding:0}} selectedValue = {this.state.category} onValueChange = {this.categoryfun}>
-               <Picker.Item label = "Category"  />
-               {
-                    this.state.arr.map((value, index) => {
-                    return (
-                        <Picker.Item label ={value.category} value = {value.category}/>
-                        
-                    );
-                    })
-                }
-
-            </Picker> */}
+                  
                     </View>
                             
                     <TextField
@@ -274,9 +262,9 @@ export default class Dashboard extends Component {
 
 const styles = StyleSheet.create({
 
-    map: {
-      ...StyleSheet.absoluteFillObject,
-    },
+        map: {
+        ...StyleSheet.absoluteFillObject,
+        },
     mapContainer: {
         height:300
     },

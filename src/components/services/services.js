@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Text, TextInput,Image, View,ScrollView, StyleSheet,TouchableOpacity } from 'react-native';
 import EventStyle from "../events/EventStyle";
 
-import { TextField } from 'react-native-material-textfield';
 
 export default class Services extends Component {
     constructor() {
@@ -12,13 +11,10 @@ export default class Services extends Component {
         }
     }
 
-    onChange(name, val) {
-        this.setState({ [name]: val })
-    }
+   
  
 
     render() {
-        let { } = this.state;
         return (
             <ScrollView>
             <View style={EventStyle.subHeader}>

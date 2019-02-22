@@ -87,6 +87,7 @@ export default class Events extends Component {
                     <Text style={{fontSize:17,color:"black"}}>Name :{item.name}</Text>
                    <Text >Phone:{item.phone}</Text> 
                    <Text>Date:{item.date}</Text> 
+                   <Text>Category:{item.category}</Text> 
                 </View>
             </TouchableOpacity>
                   

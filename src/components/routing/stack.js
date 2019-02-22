@@ -1,7 +1,7 @@
 import { StackNavigator } from 'react-navigation';
 import { StyleSheet, Image, View, Text } from 'react-native';
 import Login from '../login/Login';
-import Dashboard from '../dashboard/Dashboardx';
+import Dashboard from '../dashboard/Dashboard';
 import Home from '../home/Home';
 import Events from '../events/Event';
 import EventDetail from '../eventDetail/EventDetail';

@@ -38,7 +38,7 @@ export default class Dashboard extends Component {
         this.setState({[name]: val})
     }
     getCurrentPosition=()=> {
-        Geolocation.getCurrentPosition(
+        navigator.geolocation.getCurrentPosition(
             (position) => {
                     let region={   
                     latitude: position.coords.latitude,
@@ -81,7 +81,7 @@ export default class Dashboard extends Component {
         providerListener: true // true ==> Trigger "locationProviderStatusChange" listener when the location state changes
     }).then(function(success) {
         // success => {alreadyEnabled: true, enabled: true, status: "enabled"}
-        Geolocation.getCurrentPosition((position) => {
+        navigator.geolocation.getCurrentPosition((position) => {
                 let initialPosition = JSON.stringify(position);
                 this.setState({ initialPosition });
                 this.getCurrentPosition();

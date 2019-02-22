@@ -8,7 +8,7 @@ import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
 import com.facebook.soloader.SoLoader;
-
+import com.agontuk.RNFusedLocation.RNFusedLocationPackage;
 import java.util.Arrays;
 import java.util.List;
 import com.showlocationservicesdialogbox.LocationServicesDialogBoxPackage;
@@ -25,6 +25,7 @@ public class MainApplication extends Application implements ReactApplication {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
             new MapsPackage(),
+              new RNFusedLocationPackage(),
            new LocationServicesDialogBoxPackage()
       );
     }

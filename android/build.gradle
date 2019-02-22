@@ -22,4 +22,11 @@ allprojects {
             url "$rootDir/../node_modules/react-native/android"
         }
     }
+    ext {
+    compileSdkVersion   = 25
+    targetSdkVersion    = 25
+    buildToolsVersion   = "25.0.2"
+    supportLibVersion   = "25.0.1"
+    googlePlayServicesVersion = "11.0.0"
+}
 }

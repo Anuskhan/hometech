@@ -6,7 +6,7 @@ import DashboardStyle from './DashboardStyle';
 import firebase from "firebase";
 import moment from "moment";
 // main page map waala 
-
+import Geolocation from 'react-native-geolocation-service';
 import {
     Text,
     View,
@@ -38,19 +38,19 @@ export default class Dashboard extends Component {
         this.setState({[name]: val})
     }
     getCurrentPosition=()=> {
-        navigator.geolocation.getCurrentPosition(
+        Geolocation.getCurrentPosition(
             (position) => {
-                let region={   
-                latitude: position.coords.latitude,
-                longitude: position.coords.longitude,
-                latitudeDelta: 0.00115,
-                longitudeDelta: 0.000121,
-                }
-              this.setState({
-                error: null,
-                mapRegion: region,
-               
-              });
+                    let region={   
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude,
+                    latitudeDelta: 0.00115,
+                    longitudeDelta: 0.000121,
+                    }
+                this.setState({
+                    error: null,
+                    mapRegion: region,
+                
+                });
             },
             (error) => this.setState({ error: error.message }),
           );
@@ -81,7 +81,7 @@ export default class Dashboard extends Component {
         providerListener: true // true ==> Trigger "locationProviderStatusChange" listener when the location state changes
     }).then(function(success) {
         // success => {alreadyEnabled: true, enabled: true, status: "enabled"}
-            navigator.geolocation.getCurrentPosition((position) => {
+        Geolocation.getCurrentPosition((position) => {
                 let initialPosition = JSON.stringify(position);
                 this.setState({ initialPosition });
                 this.getCurrentPosition();

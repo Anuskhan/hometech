@@ -31,11 +31,7 @@ export default class DrawerItemsComponent extends Component<{}> {
                     source={require('../../../assets/images/logo.png')} /></TouchableOpacity>
                     <ScrollView>
                         <View style={DrawerItemsComponentStyle.drawerList}>
-                            <TouchableOpacity style={DrawerItemsComponentStyle.drawerListItem} onPress={(nextRouteName) => { this.navigationScreenFunction('Dashboard') }} activeOpacity={0.6}>
-                                <Text style={[DrawerItemsComponentStyle.drawerListItemText]}>
-                                    <Text style={{ justifyContent: 'flex-end' }}>Dashborad</Text>
-                                </Text>
-                            </TouchableOpacity>
+                        
                             <TouchableOpacity style={DrawerItemsComponentStyle.drawerListItem} onPress={(nextRouteName) => { this.navigationScreenFunction('Events') }} activeOpacity={0.6}>
                                 <Text style={[DrawerItemsComponentStyle.drawerListItemText]}>
                                     Complains

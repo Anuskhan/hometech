@@ -22,6 +22,7 @@ export default class Rate extends Component {
               obj = snap.val();
               obj.key = snap.key
               array.push(obj);
+              array.reverse();
               this.setState({
         
                 arr: array,

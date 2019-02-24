@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Text, TextInput,FlatList,ActivityIndicator, View,ImageBackground, TouchableOpacity } from 'react-native';
 import EventStyle from '../events/EventStyle';
+import EventCreateStyle from '../eventCreate/EventCreateStyle';
 import { TextField } from 'react-native-material-textfield';
 import DashboardStyle from '../dashboard/DashboardStyle';
 import Swipeable from 'react-native-swipeable';

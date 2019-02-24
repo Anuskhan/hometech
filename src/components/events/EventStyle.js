@@ -10,7 +10,7 @@ export default EventStyle = StyleSheet.create({
         borderBottomColor: '#d3d3d3'
     },
     listItemDetail: {
-        flex: 1
+        flex: 1,
     }, 
     seen: {
         flex: 1

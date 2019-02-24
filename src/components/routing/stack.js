@@ -5,9 +5,7 @@ import Dashboard from '../dashboard/Dashboard';
 import Home from '../home/Home';
 import Events from '../events/Event';
 import EventDetail from '../eventDetail/EventDetail';
-import EventCreate from '../eventCreate/EventCreate';
 import Speaker from '../speaker/Speaker';
-import SpeakerCreate from '../speakerCreate/SpeakerCreate';
 // import SpeakerDetail from '../speakerDetails/SpeakerDetail';
 import SignUp from '../signup/signup';
 import Services from '../services/services';
@@ -75,12 +73,6 @@ export const MainStack = StackNavigator({
     },
     Signup: {
         screen: SignUp,
-        navigationOptions: {
-            header: null,
-        }
-    },
-    SpeakerCreate: {
-        screen: SpeakerCreate,
         navigationOptions: {
             header: null,
         }

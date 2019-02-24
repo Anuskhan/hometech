@@ -3,12 +3,11 @@ import { StyleSheet, Image, View, Text } from 'react-native';
 import Login from '../login/Login';
 import Dashboard from '../dashboard/Dashboard';
 import Home from '../home/Home';
+    
 import servRate from '../home/servRate';
 import Events from '../events/Event';
 import EventDetail from '../eventDetail/EventDetail';
-import EventCreate from '../eventCreate/EventCreate';
 import Speaker from '../speaker/Speaker';
-import SpeakerCreate from '../speakerCreate/SpeakerCreate';
 import SignUp from '../signup/signup';
 import React, { Component } from 'react';
 import { NavigationActions } from 'react-navigation';
@@ -66,12 +65,6 @@ export const AdminMainStack = StackNavigator({
             header: null,
         }
     },
-    SpeakerCreate: {
-        screen: SpeakerCreate,
-        navigationOptions: {
-            header: null,
-        }
-    },
     Rate: {
         screen: Rate,
         navigationOptions: {
@@ -89,12 +82,6 @@ export const AdminMainStack = StackNavigator({
         navigationOptions: {
             header: null,
         }   
-    },
-    EventCreate: {
-        screen: EventCreate,
-        navigationOptions: {
-            header: null,
-        }
     },
     Home: {
         screen: Home,

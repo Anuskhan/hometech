@@ -29,9 +29,11 @@ export default class Events extends Component {
           obj.key = snap.key
           console.log(obj,"obxxx")
           array.push(obj);
+          var arr=array.reverse()
+        //   array.reverse();
           this.setState({
     
-            arr: array,
+            arr: arr,
             load:false
           })
 
@@ -45,9 +47,7 @@ export default class Events extends Component {
             <View style={EventStyle.subHeader}>
                 <Text style={EventStyle.subHeaderTitle}>Check complain</Text>
 
-                <TouchableOpacity  onPress={() => {this.props.navigation.navigate("EventCreate")}}>
-               <Text style={{fontSize:24}}> + </Text>
-                </TouchableOpacity>
+               
             </View>
         )
     };
@@ -86,8 +86,9 @@ export default class Events extends Component {
                 <View style={EventStyle.listItemDetail}>
                     <Text style={{fontSize:17,color:"black"}}>Name :{item.name}</Text>
                    <Text >Phone:{item.phone}</Text> 
-                   <Text>Date:{item.date}</Text> 
                    <Text>Category:{item.category}</Text> 
+                   <Text>Date:{item.date}</Text> 
+                   <Text>Time:{item.time}</Text> 
                 </View>
             </TouchableOpacity>
                   

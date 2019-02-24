@@ -27,8 +27,9 @@
                 var array = [];
                 firebase.database().ref("/").child("serviceRate").on('child_added', snap => {
                   obj = snap.val();
-                  obj.key = snap.key
+                  obj.key = snap.key;
                   array.push(obj);
+                  array.reverse();
                   this.setState({
             
                     arr: array,

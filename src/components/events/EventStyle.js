@@ -9,6 +9,16 @@ export default EventStyle = StyleSheet.create({
         borderBottomWidth: 1,
         borderBottomColor: '#d3d3d3'
     },
+    listItemSeen: {
+        padding: 15,
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderBottomWidth: 1,
+        borderBottomColor: 'black',
+        marginHorizontal:5,
+        marginTop:4,
+        backgroundColor: '#D9D4D3',
+    },
     listItemDetail: {
         flex: 1,
     }, 

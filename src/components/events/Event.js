@@ -81,7 +81,16 @@ export default class Events extends Component {
             onSwipeRelease={() => this.setState({isSwiping: false})}
             onRef = {ref => this.swipeable = ref}
             onRightButtonsOpenRelease = {onOpen} onRightButtonsCloseRelease = {onClose}>
-             
+           {  (item.seen)?
+            <TouchableOpacity activeOpacity={0.5} style={EventStyle.listItemSeen} onPress={() => this.props.navigation.navigate('EventDetail', { item })}>
+                <View style={EventStyle.listItemDetail}>
+                    <Text style={{fontSize:17,color:"black"}}>Name :{item.name}</Text>
+                   <Text >Phone:{item.phone}</Text> 
+                   <Text>Category:{item.category}</Text> 
+                   <Text>Date:{item.date}</Text> 
+                   <Text>Time:{item.time}</Text> 
+                </View>
+            </TouchableOpacity>  :
             <TouchableOpacity activeOpacity={0.5} style={EventStyle.listItem} onPress={() => this.props.navigation.navigate('EventDetail', { item })}>
                 <View style={EventStyle.listItemDetail}>
                     <Text style={{fontSize:17,color:"black"}}>Name :{item.name}</Text>
@@ -91,7 +100,7 @@ export default class Events extends Component {
                    <Text>Time:{item.time}</Text> 
                 </View>
             </TouchableOpacity>
-                  
+                  }
             </Swipeable>
         )
     };

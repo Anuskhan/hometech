@@ -35,8 +35,7 @@
                 category:'',
                 arr:[],
                 date:""
-    
-            }
+             }
         }
     
         componentDidMount(){
@@ -60,6 +59,8 @@
                 category:item.category,
                 date:item.date
               });
+
+              firebase.database().ref("/").child("complain").child(item.key).update({"seen": false});
        
     }
             

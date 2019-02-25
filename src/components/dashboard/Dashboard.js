@@ -133,7 +133,7 @@ export default class Dashboard extends Component {
       let date=moment().format(" Do MMM YY");
       let time=moment().format('hh:mm A');
 
-      let payload = {name,phone,address,category,date,time,latitude:mapRegion.latitude,longitude:mapRegion.longitude};
+      let payload = {name,phone,address,category,seen:true,date,time,latitude:mapRegion.latitude,longitude:mapRegion.longitude};
       firebase.database().ref("/").child("complain").push(payload).then((successf)=>{
           alert("Your order has been placed ")
           this.setState({

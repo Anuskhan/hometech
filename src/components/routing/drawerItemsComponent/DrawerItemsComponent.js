@@ -25,7 +25,7 @@ export default class DrawerItemsComponent extends Component<{}> {
         let { navigation } = this.props;
         return (
             <View style={DrawerItemsComponentStyle.drawerContainer}>
-                <ImageBackground style={DrawerItemsComponentStyle.drawerBackgroundImage} source={require('../../../assets/images/background.jpg')}>
+                <ImageBackground style={DrawerItemsComponentStyle.drawerBackgroundImage} source={require('../../../assets/images/draw.png')}>
                 <TouchableOpacity onPress={() => { this.props.navigation.navigate("Signup") }}>
                 <Image  style={DrawerItemsComponentStyle.drawerHeaderImage}
                     source={require('../../../assets/images/logo.png')} /></TouchableOpacity>

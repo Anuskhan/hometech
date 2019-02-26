@@ -53,32 +53,16 @@ export default class Services extends Component {
             
   </View>
   <View style={styles.cardSection2}>
-<Image style={styles.image} source={require('../../assets/images/5.png')} />
-<Text style={styles.txt}>PAINTER SERVICES</Text>
+<Image style={styles.image} source={require('../../assets/images/wash.png')} />
+<Text style={styles.txt}>Washing Machine</Text>
   <View style={{marginTop:"3%"}}>
             <Text style={{color:"black",padding:10,fontWeight:"bold"}}>
-            Get a new coat and make your walls look attractive. Technician Expert deals with quality services in interior and exterior house and commercials painting to make your walls look good.
-            </Text>
+            Our Washing Machine Services is not brand specific. We service all of the popular Washing systems around for all types of businesses and institutions.We offer comprehensive services including installation, and maintenance.
+           </Text>
 </View>      
   </View>
-  <View style={styles.cardSection2}>
-<Image style={styles.image} source={require('../../assets/images/6.png')} />
-<Text style={styles.txt}>PLUMBER SERVICES</Text>
-  <View style={{marginTop:"3%"}}>
-            <Text style={{color:"black",padding:10,fontWeight:"bold"}}>
-            We deal in almost all kind of plumbing work which includes PPR Fittings, CPVC Fitting . Be it a major contract or a minor repair work, just give us a call and get your plumbing worries fixed.
-             </Text>
-</View>      
-  </View>
-  <View style={styles.cardSection2}>
-<Image style={styles.image} source={require('../../assets/images/b1.png')} />
-<Text style={styles.txt}>MASON SERVICES</Text>
-  <View style={{marginTop:"3%"}}>
-            <Text style={{color:"black",padding:10,fontWeight:"bold"}}>
-            We offer complete masonry services to commercial and residential customer. All our masons are well experienced and work under professional.Just sit back and indulge with your rest.
-            </Text>
-</View>      
-  </View>
+  
+  
   <View style={styles.cardSection2}>
 <Image style={styles.image} source={require('../../assets/images/7.png')} />
 <Text style={styles.txt}>GENERATOR REPAIR SERVICE</Text>

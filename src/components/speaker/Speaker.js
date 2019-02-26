@@ -51,7 +51,7 @@
         };
         deleteCat=(id)=>{
             firebase.database().ref("/").child("serviceRate").child(id).remove().then(()=>{
-                alert("Delete Category Successfully")
+                alert("Delete Successfully")
                 this.props.navigation.navigate("Speaker")
             })
         }

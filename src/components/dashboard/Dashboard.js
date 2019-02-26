@@ -152,7 +152,7 @@ export default class Dashboard extends Component {
         let { category,address,mapRegion} = this.state;
         let disable = !(category && address );
         return (
-                <ImageBackground style={{ flex: 1 }} source={require('../../assets/images/fmbg.jpg')}>
+                <ImageBackground style={{ flex: 1 }} source={require('../../assets/images/main.jpg')}>
             <ScrollView>
 
           
@@ -204,32 +204,24 @@ export default class Dashboard extends Component {
                 <Text  style={styles.txt}>REFRIGERATION</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={()=>{ this.categoryfun('PAINTER') }}
-              style={(category=="PAINTER")?styles.opttest:styles.opt}>
-                <Image  style={styles.img} source={require('../../assets/images/5.png')}/>
+              <TouchableOpacity onPress={()=>{ this.categoryfun('scrap') }}
+             style={(category=="scrap")?styles.opttest:styles.opt}>
+                <Image  style={styles.img} source={require('../../assets/images/ru.png')}/>
 
-                <Text  style={styles.txt} >PAINTER </Text>
+                <Text  style={styles.txt}>Scrap Sale</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={()=>{ this.categoryfun('PLUMBER') }}
-               style={(category=="PLUMBER")?styles.opttest:styles.opt}>
-                <Image  style={styles.img} source={require('../../assets/images/6.png')}/>
+            
 
-                <Text  style={styles.txt} >PLUMBER</Text>
+          
+              <TouchableOpacity onPress={()=>{ this.categoryfun('Washing Machine') }}
+               style={(category=="Washing Machine")?styles.opttest:styles.opt}>
+                <Image  style={styles.img} source={require('../../assets/images/wash.png')}/>
+
+                <Text  style={styles.txt}>Washing Machine</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={()=>{ this.categoryfun('MASON') }}
-               style={(category=="MASON")?styles.opttest:styles.opt}>
-                <Image  style={styles.img} source={require('../../assets/images/7.png')}/>
-
-                <Text  style={styles.txt}>MASON </Text>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={()=>{ this.categoryfun('GENERATOR') }}
-               style={(category=="GENERATOR")?styles.opttest:styles.opt}>
-                <Image  style={styles.img} source={require('../../assets/images/b1.png')}/>
-
-                <Text  style={styles.txt}>GENERATOR</Text>
-              </TouchableOpacity>
+              
 
             </ScrollView>
                   

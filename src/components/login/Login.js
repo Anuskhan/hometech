@@ -44,7 +44,7 @@ login=()=>{
         let { name,phone} = this.state;
         let disable = !(name && phone);
         return (
-            <ImageBackground style={{ flex: 1 }} source={require('../../assets/images/background.jpg')}>
+            <ImageBackground style={{ flex: 1 }} source={require('../../assets/images/test.jpeg')}>
                 <ScrollView>
                     <View style={LoginStyle.viewBoxTop} >
                         <Image style={LoginStyle.Logoimage}

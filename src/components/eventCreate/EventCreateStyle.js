@@ -16,7 +16,8 @@ export default EventCreateStyle = StyleSheet.create({
     dev: {
        backgroundColor:"#ffff",
        borderRadius:10,
-       marginTop:4
+       marginTop:4,
+       
     },
     pickerView: {
         marginTop: 20,

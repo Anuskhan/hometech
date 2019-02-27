@@ -153,6 +153,14 @@ export default class Dashboard extends Component {
         let disable = !(category && address );
         return (
                 <ImageBackground style={{ flex: 1 }} source={require('../../assets/images/main.jpg')}>
+             <View style={styles.draw}>
+
+             <TouchableOpacity onPress={() => {this.props.navigation.navigate('DrawerOpen'); } }
+                style={{flex:1,height:40, paddingLeft:8,padding:5,alignItems: 'center',position:'absolute'}}>
+                <Image  style={{height:32,width:32}} source={require('../../assets/images/menu.png')}/>
+                
+              </TouchableOpacity>
+                </View>
             <ScrollView>
 
           
@@ -204,11 +212,17 @@ export default class Dashboard extends Component {
                 <Text  style={styles.txt}>REFRIGERATION</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={()=>{ this.categoryfun('scrap') }}
-             style={(category=="scrap")?styles.opttest:styles.opt}>
+              <TouchableOpacity onPress={()=>{ this.categoryfun('SALE PURCHASE') }}
+             style={(category=="SALE PURCHASE")?styles.opttest:styles.opt}>
                 <Image  style={styles.img} source={require('../../assets/images/ru.png')}/>
 
-                <Text  style={styles.txt}>Scrap Sale</Text>
+                <Text  style={styles.txt}>SALE PURCHASE</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={()=>{ this.categoryfun('OVEN') }}
+             style={(category=="OVEN")?styles.opttest:styles.opt}>
+                <Image  style={styles.img} source={require('../../assets/images/oven.png')}/>
+
+                <Text  style={styles.txt}>MICRO OVEN</Text>
               </TouchableOpacity>
 
             
@@ -261,6 +275,7 @@ const styles = StyleSheet.create({
     mapContainer: {
         height:300
     },
+  
     container: {
         ...StyleSheet.absoluteFillObject,
          flex:1,
@@ -284,6 +299,10 @@ const styles = StyleSheet.create({
         flex:1,
          justifyContent:'center',
          alignContent:'center',
+
+      },
+      draw:{
+        height:40,flexDirection: 'row',backgroundColor: '#fff'
 
       },
       opttest:{

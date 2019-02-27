@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, TextInput,FlatList,ActivityIndicator, View,ImageBackground, TouchableOpacity } from 'react-native';
+import { Text,Image, TextInput,FlatList,ActivityIndicator, View,ImageBackground, TouchableOpacity } from 'react-native';
 import EventStyle from '../events/EventStyle';
 import { TextField } from 'react-native-material-textfield';
 import DashboardStyle from '../dashboard/DashboardStyle';
@@ -66,6 +66,7 @@ catadd=()=>{
            
             <View>
             <View style={EventCreateStyle.dev}>
+          
                 <Text style={EventCreateStyle.heading}>Services Rate</Text>
             </View>
                 <View style={EventCreateStyle.textFeildView}>

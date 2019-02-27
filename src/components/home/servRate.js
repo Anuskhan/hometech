@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, TextInput,FlatList,ActivityIndicator, View,ImageBackground, TouchableOpacity } from 'react-native';
+import { Text, TextInput,FlatList,ActivityIndicator,Image, View,ImageBackground, TouchableOpacity } from 'react-native';
 import EventStyle from '../events/EventStyle';
 import EventCreateStyle from '../eventCreate/EventCreateStyle';
 import { TextField } from 'react-native-material-textfield';
@@ -84,6 +84,11 @@ update=()=>{
            
             <View>
             <View style={EventCreateStyle.dev}>
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate('DrawerOpen'); } }
+                style={{flex:0.4}}>
+                <Image  style={{height:28,width:28}} source={require('../../assets/images/menu.png')}/>
+                
+              </TouchableOpacity>
                 <Text style={EventCreateStyle.heading}>Services Rate</Text>
             </View>
                 <View style={EventCreateStyle.textFeildView}>

@@ -18,6 +18,11 @@ export default class Services extends Component {
         return (
             <ScrollView>
             <View style={EventStyle.subHeader}>
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate('DrawerOpen'); } }
+                style={{flex:0.7}}>
+                <Image  style={{height:28,width:28}} source={require('../../assets/images/menu.png')}/>
+                
+              </TouchableOpacity>
                 <Text style={EventStyle.title}>Services</Text>
 
             </View>
@@ -50,11 +55,21 @@ export default class Services extends Component {
             Our Refrigeration Services is not brand specific. We service all of the popular refrigeration systems around for all types of businesses and institutions.We offer comprehensive services including installation, and maintenance.
             </Text>
 </View>
+</View>
+
+
+  <View style={styles.cardSection2}>
+<Image style={styles.image} source={require('../../assets/images/oven.png')} />
+<Text style={styles.txt}>OVENS</Text>
+  <View style={{marginTop:"3%"}}>
+            <Text style={{color:"black",padding:10,fontWeight:"bold"}}>
+            I Will Be Providing Repairing Services , Ovens and Micro Ovens products both national and international products. I am an expertise technicians who are capable of giving you the best services as on when needed. Kindly contact us for more details.</Text>
+</View>
             
   </View>
   <View style={styles.cardSection2}>
 <Image style={styles.image} source={require('../../assets/images/wash.png')} />
-<Text style={styles.txt}>Washing Machine</Text>
+<Text style={styles.txt}>WASHING MACHINE</Text>
   <View style={{marginTop:"3%"}}>
             <Text style={{color:"black",padding:10,fontWeight:"bold"}}>
             Our Washing Machine Services is not brand specific. We service all of the popular Washing systems around for all types of businesses and institutions.We offer comprehensive services including installation, and maintenance.
@@ -64,14 +79,9 @@ export default class Services extends Component {
   
   
   <View style={styles.cardSection2}>
-<Image style={styles.image} source={require('../../assets/images/7.png')} />
-<Text style={styles.txt}>GENERATOR REPAIR SERVICE</Text>
-  <View style={{marginTop:"3%"}}>
-            <Text style={{color:"black",padding:10,fontWeight:"bold"}}>
-            Our professionals ensure to repair precisely packaging equipment to attain their enhanced performance and increase their functional life. Further, our professionals Generator-Repair-pstringently check the damaged generator to find exact faul.
-             </Text>
+ 
 </View>      
-  </View>
+  
 
 </View>
 </ScrollView>
@@ -84,7 +94,7 @@ const styles = {
     container: {
      flex: 1,
      backgroundColor: 'white',
-     alignItems: 'center'
+     alignItems: 'center',
     },
     image: {
      width: 50,

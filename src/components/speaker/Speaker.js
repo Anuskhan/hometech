@@ -1,5 +1,5 @@
     import React, { Component } from 'react';
-    import { View, TouchableOpacity, Text, FlatList, ActivityIndicator } from 'react-native';
+    import { View,Image, TouchableOpacity, Text, FlatList, ActivityIndicator } from 'react-native';
     
     import EventStyle from "../events/EventStyle";
     import rateStyle from "./SpeakerStyle";
@@ -41,6 +41,11 @@
         renderHeader = () => {
             return (
                 <View style={EventStyle.subHeader}>
+                 <TouchableOpacity onPress={() => {this.props.navigation.navigate('DrawerOpen'); } }
+                style={{flex:0.6}}>
+                <Image  style={{height:28,width:28}} source={require('../../assets/images/menu.png')}/>
+                
+              </TouchableOpacity>
                     <Text style={EventStyle.subHeaderTitle}>Services Rate </Text>
     
                     <TouchableOpacity  onPress={() => {this.props.navigation.navigate("Home")}}>

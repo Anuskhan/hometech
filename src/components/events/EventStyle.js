@@ -59,15 +59,15 @@ export default EventStyle = StyleSheet.create({
   
     subHeaderTitle: {
         flex:1,
-        marginRight:15,
+        marginRight:10,
         fontSize:18,
         color: '#053173',
         fontWeight: 'bold'
       
     },
     title: {
-        // flex:1,
-        marginRight:15,
+        flex:1,
+        marginRight:30,
         fontSize:18,
         color: '#053173',
         fontWeight: 'bold',

@@ -232,7 +232,7 @@ export default class Dashboard extends Component {
                style={(category=="Washing Machine")?styles.opttest:styles.opt}>
                 <Image  style={styles.img} source={require('../../assets/images/wash.png')}/>
 
-                <Text  style={styles.txt}>WASHING MACHINE</Text>
+                <Text  style={styles.txt}>WASHING MACHINES</Text>
               </TouchableOpacity>
 
               

@@ -30,6 +30,7 @@ export default class Dashboard extends Component {
             phone:'',
             address:'',
             category:'',
+            subcategory:'',
             arr:[],
 
         }
@@ -119,10 +120,13 @@ export default class Dashboard extends Component {
         this.setState({ category: cat })
        
      }
+    subcategoryfun = (cat) => {
+        this.setState({ subcategory: cat })
+       
+     }
   submit =()=>{
-      // let obj = { dateOfBirth, religion, email, gender, maritaStatus };
       
-      let {  name,phone,address,category,mapRegion} = this.state;
+      let {  name,phone,address,category,mapRegion,subcategory} = this.state;
       if(!name && !phone ){
         alert('Login first please')
         this.props.navigation.navigate("Login") 
@@ -134,7 +138,7 @@ export default class Dashboard extends Component {
       let date=moment().format(" Do MMM YY");
       let time=moment().format('hh:mm A');
 
-      let payload = {name,phone,address,category,seen:true,date,time,latitude:mapRegion.latitude,longitude:mapRegion.longitude};
+      let payload = {name,phone,address,category,subcategory,seen:true,date,time,latitude:mapRegion.latitude,longitude:mapRegion.longitude};
       firebase.database().ref("/").child("complain").push(payload).then((successf)=>{
           alert("Your order has been placed ")
           this.setState({
@@ -150,7 +154,7 @@ export default class Dashboard extends Component {
 }
     render() {
 
-        let { category,address,mapRegion} = this.state;
+        let { category,address,mapRegion,subcategory} = this.state;
         let disable = !(category && address );
         return (
                 <ImageBackground style={{ flex: 1 }} source={require('../../assets/images/main.jpg')}>
@@ -203,12 +207,7 @@ export default class Dashboard extends Component {
                 <Text style={styles.txt}>AC REPAIR</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={()=>{ this.categoryfun('ELECTRICIAN') }}
-                style={(category=="ELECTRICIAN")?styles.opttest:styles.opt}>
-                <Image  style={styles.img} source={require('../../assets/images/2.png')}/>
-
-                <Text  style={styles.txt}>ELECTRICIAN</Text>
-              </TouchableOpacity>
+             
 
               <TouchableOpacity onPress={()=>{ this.categoryfun('REFRIGERATION') }}
              style={(category=="REFRIGERATION")?styles.opttest:styles.opt}>
@@ -227,7 +226,7 @@ export default class Dashboard extends Component {
              style={(category=="OVEN")?styles.opttest:styles.opt}>
                 <Image  style={styles.img} source={require('../../assets/images/oven.png')}/>
 
-                <Text  style={styles.txt}>MICRO OVEN</Text>
+                <Text  style={styles.txt}>OVEN REPAIR</Text>
               </TouchableOpacity>
 
             
@@ -240,11 +239,117 @@ export default class Dashboard extends Component {
                 <Text  style={styles.txt}>WASHING MACHINES</Text>
               </TouchableOpacity>
 
-              
+              <TouchableOpacity onPress={()=>{ this.categoryfun('ELECTRICIAN') }}
+                style={(category=="ELECTRICIAN")?styles.opttest:styles.opt}>
+                <Image  style={styles.img} source={require('../../assets/images/2.png')}/>
+
+                <Text  style={styles.txt}>ELECTRICIAN</Text>
+              </TouchableOpacity>
 
             </ScrollView>
+            </View>
+
+            {
+          (category=="AC REPAIR")?
+            <View style={{color:'#ffff',borderBottomColor: '#ffff', borderBottomWidth: 0.5}}>
+            <ScrollView
+              horizontal={true}
+              style={{
+                marginVertical: 10,
+                
+                paddingVertical: 0,
+                width: "100%"
+              }}>
+     
+              <TouchableOpacity onPress={()=>{ this.subcategoryfun('Dc Inverter') }}
+                style={(subcategory=="Dc Inverter")?styles.opttest:styles.opt}>
+                <Image  style={styles.img1} source={require('../../assets/images/cooler1.png')}/>
+                <Text style={styles.txt}>Dc Inverter</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity onPress={()=>{ this.subcategoryfun('Window Ac') }}
+                style={(subcategory=="Window Ac")?styles.opttest:styles.opt}>
+                <Image  style={styles.img1} source={require('../../assets/images/air-conditioner.png')}/>
+                <Text style={styles.txt}>Window Ac</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity onPress={()=>{ this.subcategoryfun('Tower Ac') }}
+                style={(subcategory=="Tower Ac")?styles.opttest:styles.opt}>
+                <Image  style={styles.img1} source={require('../../assets/images/cooler.png')}/>
+                <Text style={styles.txt}>Tower Ac</Text>
+              </TouchableOpacity>
+
+              <TouchableOpacity onPress={()=>{ this.subcategoryfun('110 Ac') }}
+                style={(subcategory=="110 Ac")?styles.opttest:styles.opt}>
+                <Image  style={styles.img1} source={require('../../assets/images/cooler1.png')}/>
+                <Text style={styles.txt}>110 Ac</Text>
+              </TouchableOpacity>
+              
+            </ScrollView>
                   
-                    </View>
+            </View>
+            : null
+            }
+
+          {(category=="REFRIGERATION")?
+           <View style={{color:'#ffff',borderBottomColor: '#ffff', borderBottomWidth: 0.5}}>
+           <ScrollView
+             horizontal={true}
+             style={{
+               marginVertical: 10,
+               
+               paddingVertical: 0,
+               width: "100%"
+             }}>
+    
+              <TouchableOpacity onPress={()=>{ this.subcategoryfun('De Frozen Fridge') }}
+                style={(subcategory=="De Frozen Fridge")?styles.opttest:styles.opt}>
+                <Image  style={styles.img1} source={require('../../assets/images/3.png')}/>
+                <Text style={styles.txt}>De Frozen Fridge</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={()=>{ this.subcategoryfun('Non Frozen Fridge') }}
+                style={(subcategory=="Non Frozen Fridge")?styles.opttest:styles.opt}>
+                <Image  style={styles.img1} source={require('../../assets/images/3.png')}/>
+                <Text style={styles.txt}>Non Frozen Fridge</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={()=>{ this.subcategoryfun('Water Dispenser') }}
+                style={(subcategory=="Water Dispenser")?styles.opttest:styles.opt}>
+                <Image  style={styles.img1} source={require('../../assets/images/water-dispenser.png')}/>
+                <Text style={styles.txt}>Water Dispenser</Text>
+              </TouchableOpacity>
+              </ScrollView>
+                  
+                  </View>
+            :null
+            }
+          {(category=="Washing Machine")?
+            <View style={{color:'#ffff',borderBottomColor: '#ffff', borderBottomWidth: 0.5}}>
+            <ScrollView
+              horizontal={true}
+              style={{
+                marginVertical: 10,
+                
+                paddingVertical: 0,
+                width: "100%"
+              }}>
+              <TouchableOpacity onPress={()=>{ this.subcategoryfun('Automatic') }}
+                style={(subcategory=="Automatic")?styles.opttest:styles.opt}>
+                <Image  style={styles.img1} source={require('../../assets/images/wash.png')}/>
+                <Text style={styles.txt}>Automatic</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={()=>{ this.subcategoryfun('Manual') }}
+                style={(subcategory=="Manual")?styles.opttest:styles.opt}>
+                <Image  style={styles.img1} source={require('../../assets/images/wash.png')}/>
+                <Text style={styles.txt}>Manual</Text>
+              </TouchableOpacity>
+             
+            
+              </ScrollView>
+                  
+                  </View>
+            :null
+            } 
+ 
                             
                     <TextField
                         label='Address'
@@ -291,6 +396,14 @@ const styles = StyleSheet.create({
       img:{
         width:32,
         height:32,
+        alignItems: 'center',
+        marginBottom:4,
+        justifyContent:'center',
+        marginLeft:"20%"
+      },
+      img1:{
+        width:28,
+        height:28,
         alignItems: 'center',
         marginBottom:4,
         justifyContent:'center',

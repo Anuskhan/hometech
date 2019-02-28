@@ -64,8 +64,6 @@ export default EventDetailStyle = StyleSheet.create({
         marginLeft: 5
     }, 
      cardListItemTitle: {
-        fontSize: 14,
-        color: '#000',
-        fontWeight: '800'
+        fontSize: 14, color: '#000', fontWeight: '800'
     },
 });

@@ -5,8 +5,8 @@
     import { TextField } from 'react-native-material-textfield';
     import DashboardStyle from '../dashboard/DashboardStyle';
     import EventDetailStyle from './EventDetailStyle';
-    import firebase from "firebase";
     import Communications from 'react-native-communications';
+    import firebase from "firebase";
 
     // complain detailss
     
@@ -111,9 +111,9 @@
                                 <Text style={EventDetailStyle.cardListItemText}>{date}</Text>
                             </View>
                             <View style={EventDetailStyle.cardListItem}>
-                                <Text style={EventDetailStyle.cardListItemTitle}>Phone : {phone}</Text>
-                                <TouchableOpacity style={EventDetailStyle.listItemDetailIconButton} onPress={() => Communications.phonecall(phone, true)}>
-                    <Image  style={EventDetailStyle.listItemDetailIcon} source={require('../../assets/images/phone.png')}/>
+                                    <Text style={EventDetailStyle.cardListItemTitle}>Phone : {phone}</Text>
+                                    <TouchableOpacity style={EventDetailStyle.listItemDetailIconButton} onPress={() => Communications.phonecall(phone, true)}>
+                        <Image  style={EventDetailStyle.listItemDetailIcon} source={require('../../assets/images/phone.png')}/>
                 </TouchableOpacity> 
                             </View>
 

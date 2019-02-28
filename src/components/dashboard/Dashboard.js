@@ -5,6 +5,7 @@ import { TextField } from 'react-native-material-textfield';
 import DashboardStyle from './DashboardStyle';
 import firebase from "firebase";
 import moment from "moment";
+import Communications from 'react-native-communications';
 // main page map waala 
 import Geolocation from 'react-native-geolocation-service';
 import {
@@ -153,17 +154,21 @@ export default class Dashboard extends Component {
         let disable = !(category && address );
         return (
                 <ImageBackground style={{ flex: 1 }} source={require('../../assets/images/main.jpg')}>
-             <View style={styles.draw}>
 
-             <TouchableOpacity onPress={() => {this.props.navigation.navigate('DrawerOpen'); } }
-                style={{flex:1,height:40, paddingLeft:8,padding:5,alignItems: 'center',position:'absolute'}}>
-                <Image  style={{height:32,width:32}} source={require('../../assets/images/menu.png')}/>
-                
-              </TouchableOpacity>
-                </View>
-            <ScrollView>
+          <View style={styles.draw}>
 
-          
+          <TouchableOpacity onPress={() => {this.props.navigation.navigate('DrawerOpen'); } }
+            style={{flex:1,height:40, paddingLeft:8,padding:5,alignItems: 'center',position:'absolute'}}>
+            <Image  style={{height:32,width:32}} source={require('../../assets/images/menu.png')}/>
+            
+          </TouchableOpacity>
+          <TouchableOpacity style={{flex:1,flexDirection: 'row',justifyContent:'flex-end', paddingLeft:8,padding:5}} onPress={() => Communications.phonecall('03030122259', true)}>
+          <Text style={{height:32,fontSize: 20,color:'black'}}> <Image  style={{height:32,width:32}} source={require('../../assets/images/phhone.png')}/> 03030122259 </Text>
+                            
+                          </TouchableOpacity> 
+            </View>
+
+   <ScrollView>
                 <View >
                   
                 <View style={styles.mapContainer}>    
@@ -302,7 +307,7 @@ const styles = StyleSheet.create({
 
       },
       draw:{
-        height:40,flexDirection: 'row',backgroundColor: '#fff'
+        height:40,flexDirection: 'row',backgroundColor: '#f29638'
 
       },
       opttest:{

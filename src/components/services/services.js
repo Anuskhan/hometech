@@ -31,25 +31,24 @@ export default class Services extends Component {
   <View style={styles.cardSection2}>
 <Image style={styles.image} source={require('../../assets/images/1.png')} />
 <Text style={styles.txt}>AC REPAIR SERVICE</Text>
+<Text style={styles.txtsub}>Dc Inverter</Text>
+<Text style={styles.txtsub}>Window Ac</Text>
+<Text style={styles.txtsub}>Tower Ac</Text>
+<Text style={styles.txtsub}>110 Ac</Text>
   <View style={{marginTop:"3%"}}>
             <Text style={{color:"black",padding:10,fontWeight:"bold"}}>We can provide expert service at your doorstep for all your Air conditioning Our range of services include complete repair, installation of a new AC and even regular servicing of all brands across all localities of Pakistan.
             </Text>
 </View>
             
   </View>
-  <View style={styles.cardSection2}>
-<Image style={styles.image} source={require('../../assets/images/2.png')} />
-<Text style={styles.txt}>ELECTRICIAN SERVICE</Text>
-  <View style={{marginTop:"3%"}}>
-            <Text style={{color:"black",padding:10,fontWeight:"bold"}}>
-            We know you’d rather not fiddle with your electrical wiring or outlets unless you know exactly what you’re doing. When you use the our platform to book a professional electrical contractor, you can take all your stress out of the equation.
-            </Text>
-</View>
-            
-  </View>
+ 
   <View style={styles.cardSection2}>
 <Image style={styles.image} source={require('../../assets/images/3.png')} />
 <Text style={styles.txt}>REFRIGERATION SERVICE</Text>
+<Text style={styles.txtsub}>De Frozen Fridge</Text>
+<Text style={styles.txtsub}>Non Frozen Fridge</Text>
+<Text style={styles.txtsub}>Water Dispenser</Text>
+
   <View style={{marginTop:"3%"}}>
             <Text style={{color:"black",padding:10,fontWeight:"bold"}}>
             Our Refrigeration Services is not brand specific. We service all of the popular refrigeration systems around for all types of businesses and institutions.We offer comprehensive services including installation, and maintenance.
@@ -61,6 +60,9 @@ export default class Services extends Component {
   <View style={styles.cardSection2}>
 <Image style={styles.image} source={require('../../assets/images/oven.png')} />
 <Text style={styles.txt}>OVENS</Text>
+<Text style={styles.txtsub}>Repairing</Text>
+<Text style={styles.txtsub}>Service</Text>
+
   <View style={{marginTop:"3%"}}>
             <Text style={{color:"black",padding:10,fontWeight:"bold"}}>
             I Will Be Providing Repairing Services , Ovens and Micro Ovens products both national and international products. I am an expertise technicians who are capable of giving you the best services as on when needed. Kindly contact us for more details.</Text>
@@ -70,13 +72,25 @@ export default class Services extends Component {
   <View style={styles.cardSection2}>
 <Image style={styles.image} source={require('../../assets/images/wash.png')} />
 <Text style={styles.txt}>WASHING MACHINE</Text>
+<Text style={styles.txtsub}>Automatic</Text>
+<Text style={styles.txtsub}>Manual</Text>
+
   <View style={{marginTop:"3%"}}>
             <Text style={{color:"black",padding:10,fontWeight:"bold"}}>
             Our Washing Machine Services is not brand specific. We service all of the popular Washing systems around for all types of businesses and institutions.We offer comprehensive services including installation, and maintenance.
            </Text>
 </View>      
   </View>
-  
+  <View style={styles.cardSection2}>
+<Image style={styles.image} source={require('../../assets/images/2.png')} />
+<Text style={styles.txt}>ELECTRICIAN SERVICE</Text>
+  <View style={{marginTop:"3%"}}>
+            <Text style={{color:"black",padding:10,fontWeight:"bold"}}>
+            We know you’d rather not fiddle with your electrical wiring or outlets unless you know exactly what you’re doing. When you use the our platform to book a professional electrical contractor, you can take all your stress out of the equation.
+            </Text>
+</View>
+            
+  </View>
   
   <View style={styles.cardSection2}>
  
@@ -128,6 +142,13 @@ const styles = {
     // marginTop:50,
     paddingTop:5,
     fontSize:18,
+    fontWeight:"bold"
+    },
+    txtsub: {
+      alignItems: 'center',
+      justifyContent: 'center',
+    color:"red",
+    fontSize:16,
     fontWeight:"bold"
     }
   }

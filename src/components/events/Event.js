@@ -92,6 +92,7 @@ export default class Events extends Component {
                     <Text style={{fontSize:17,color:"black"}}>Name :{item.name}</Text>
                    <Text >Phone:{item.phone}</Text> 
                    <Text>Category:{item.category}</Text> 
+                   {(item.subcategory)?<Text>Sub category:{item.subcategory}</Text> :null}
                    <Text>Date:{item.date}</Text> 
                    <Text>Time:{item.time}</Text> 
                 </View>
@@ -101,6 +102,7 @@ export default class Events extends Component {
                     <Text style={{fontSize:17,color:"black"}}>Name :{item.name}</Text>
                    <Text >Phone:{item.phone}</Text> 
                    <Text>Category:{item.category}</Text> 
+                   {(item.subcategory)?<Text>Sub category:{item.subcategory}</Text> :null}
                    <Text>Date:{item.date}</Text> 
                    <Text>Time:{item.time}</Text> 
                 </View>

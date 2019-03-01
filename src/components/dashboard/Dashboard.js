@@ -32,6 +32,8 @@ export default class Dashboard extends Component {
             category:'',
             subcategory:'',
             arr:[],
+            show:false,
+            hide:true,
 
         }
     }
@@ -108,6 +110,8 @@ export default class Dashboard extends Component {
            this.setState({
                name: params.name,
                phone: params.phone,
+               show:true,
+               hide:false,
             })
             console.log(this.state.name,"item")
        }    
@@ -124,6 +128,10 @@ export default class Dashboard extends Component {
         this.setState({ subcategory: cat })
        
      }
+  hide =()=>{
+    alert('Login first please')
+    this.props.navigation.navigate("Login") 
+  }
   submit =()=>{
       
       let {  name,phone,address,category,mapRegion,subcategory} = this.state;
@@ -143,7 +151,9 @@ export default class Dashboard extends Component {
           alert("Your order has been placed ")
           this.setState({
               address:'',
-              category:''
+              category:'',
+              subcategory:''
+
             })
         }).catch((err)=>{
             alert(err)
@@ -154,7 +164,7 @@ export default class Dashboard extends Component {
 }
     render() {
 
-        let { category,address,mapRegion,subcategory} = this.state;
+        let { category,address,mapRegion,subcategory,show,hide} = this.state;
         let disable = !(category && address );
         return (
                 <ImageBackground style={{ flex: 1 }} source={require('../../assets/images/main.jpg')}>
@@ -162,7 +172,7 @@ export default class Dashboard extends Component {
           <View style={styles.draw}>
 
           <TouchableOpacity onPress={() => {this.props.navigation.navigate('DrawerOpen'); } }
-            style={{flex:1,height:40, paddingLeft:8,padding:5,alignItems: 'center',position:'absolute'}}>
+            style={{flex:1,height:40, paddingLeft:8,padding:5}}>
             <Image  style={{height:32,width:32}} source={require('../../assets/images/menu.png')}/>
             
           </TouchableOpacity>
@@ -350,7 +360,8 @@ export default class Dashboard extends Component {
             :null
             } 
  
-                            
+        { (show)?         
+   <View>
                     <TextField
                         label='Address'
                         tintColor = '#ffff'
@@ -363,10 +374,22 @@ export default class Dashboard extends Component {
                             >
                                 <Text style={DashboardStyle.buttomText}>
                                     Book Now
-                 </Text>
+                            </Text>
                             </TouchableOpacity>
-                          
-                    </View>
+                            </View>
+                         :null
+                         }   
+                  { (hide)?
+                            <View>
+                        <TouchableOpacity  onPress={()=>{this.hide()}} style={DashboardStyle.ButtonStyle}
+                            >
+                                <Text style={DashboardStyle.buttomText}>
+                                    Book Now
+                            </Text>
+                            </TouchableOpacity>
+                            </View>
+                        :null  }
+                       </View>
                 </View>
                
                 </ScrollView>

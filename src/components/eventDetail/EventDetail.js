@@ -34,7 +34,8 @@
                 address:'',
                 category:'',
                 arr:[],
-                date:""
+                date:"",
+                subcategory:''
              }
         }
     
@@ -57,7 +58,8 @@
                 phone:item.phone,
                 address:item.address,
                 category:item.category,
-                date:item.date
+                date:item.date,
+                subcategory:(item.subcategory?item.subcategory:''),
               });
 
               firebase.database().ref("/").child("complain").child(item.key).update({"seen": false});
@@ -69,11 +71,22 @@
      
         render() {
     
-            let { name,category,address,phone,date} = this.state;
+            let { name,category,address,phone,date,subcategory} = this.state;
             return (
                     <ImageBackground style={{ flex: 1 }} source={require('../../assets/images/fmbg.jpg')}>
-                <ScrollView>
     
+
+    
+    <View style={styles.draw}>
+
+            <TouchableOpacity onPress={() => {this.props.navigation.goBack() } }
+            style={{flex:1,height:40, paddingLeft:8,padding:5}}>
+            <Image  style={{height:32,width:32}} source={require('../../assets/images/left-arrow.png')}/>
+            
+            </TouchableOpacity>
+
+  </View>
+                    <ScrollView>
               
                     <View >
                     <View style={styles.mapContainer}>    
@@ -106,6 +119,10 @@
                                 <Text style={EventDetailStyle.cardListItemTitle}>Category : </Text>
                                 <Text style={EventDetailStyle.cardListItemText}>{category}</Text>
                             </View>
+                          {(subcategory) ? <View style={EventDetailStyle.cardListItem}>
+                                <Text style={EventDetailStyle.cardListItemTitle}>Sub category : </Text>
+                                <Text style={EventDetailStyle.cardListItemText}>{subcategory}</Text>
+                            </View> :null}
                             <View style={EventDetailStyle.cardListItem}>
                                 <Text style={EventDetailStyle.cardListItemTitle}>Date : </Text>
                                 <Text style={EventDetailStyle.cardListItemText}>{date}</Text>
@@ -136,6 +153,10 @@
         map: {
           ...StyleSheet.absoluteFillObject,
         },
+        draw:{
+            height:40,flexDirection: 'row',backgroundColor: '#f29638'
+    
+          },
         mapContainer: {
             height:300
         },

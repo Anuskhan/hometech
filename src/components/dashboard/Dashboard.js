@@ -61,60 +61,54 @@ export default class Dashboard extends Component {
           );
      
     }
-
+      permistion=()=>{
+        LocationServicesDialogBox.checkLocationServicesIsEnabled({
+          message: "<h2>Use Location ?</h2>This app wants to change your device settings:<br/><br/>Use GPS, Wi-Fi, and cell network for location<br/><br/><a href='#'>Learn more</a>",
+          ok: "YES",
+          cancel: "NO",
+          enableHighAccuracy: true, // true => GPS AND NETWORK PROVIDER, false => GPS OR NETWORK PROVIDER
+          showDialog: true, // false => Opens the Location access page directly
+          openLocationServices: true, // false => Directly catch method is called if location services are turned off
+          preventOutSideTouch: false, //true => To prevent the location services popup from closing when it is clicked outside
+          preventBackClick: false, //true => To prevent the location services popup from closing when it is clicked back button
+          providerListener: true // true ==> Trigger "locationProviderStatusChange" listener when the location state changes
+      }).then(function(success) {
+          // success => {alreadyEnabled: true, enabled: true, status: "enabled"}
+          Geolocation.getCurrentPosition((position) => {
+                  let initialPosition = JSON.stringify(position);
+                  this.setState({ initialPosition });
+                  this.getCurrentPosition();
+  
+              }, error => console.log(error), {enableHighAccuracy: true, timeout: 20000, maximumAge: 10000});
+          }.bind(this)
+      ).catch((error) => {
+          console.log(error.message);
+      });
+  
+      DeviceEventEmitter.addListener('locationProviderStatusChange', function(status) { // only trigger when "providerListener" is enabled
+          console.log(status); //  status => {enabled: false, status: "disabled"} or {enabled: true, status: "enabled"}
+      });
+        
+      }  
     componentDidMount(){
-        var array = [];
-   
-        firebase.database().ref('category').on('child_added', snap => {
-            obj = snap.val();
-            obj.key = snap.key
-            array.push(obj);
-            this.setState({
-              arr: array,
-            })
-          }) 
-    //    this.checkApi();
-    LocationServicesDialogBox.checkLocationServicesIsEnabled({
-        message: "<h2>Use Location ?</h2>This app wants to change your device settings:<br/><br/>Use GPS, Wi-Fi, and cell network for location<br/><br/><a href='#'>Learn more</a>",
-        ok: "YES",
-        cancel: "NO",
-        enableHighAccuracy: true, // true => GPS AND NETWORK PROVIDER, false => GPS OR NETWORK PROVIDER
-        showDialog: true, // false => Opens the Location access page directly
-        openLocationServices: true, // false => Directly catch method is called if location services are turned off
-        preventOutSideTouch: false, //true => To prevent the location services popup from closing when it is clicked outside
-        preventBackClick: false, //true => To prevent the location services popup from closing when it is clicked back button
-        providerListener: true // true ==> Trigger "locationProviderStatusChange" listener when the location state changes
-    }).then(function(success) {
-        // success => {alreadyEnabled: true, enabled: true, status: "enabled"}
-        Geolocation.getCurrentPosition((position) => {
-                let initialPosition = JSON.stringify(position);
-                this.setState({ initialPosition });
-                this.getCurrentPosition();
 
-            }, error => console.log(error), {enableHighAccuracy: true, timeout: 20000, maximumAge: 10000});
-        }.bind(this)
-    ).catch((error) => {
-        console.log(error.message);
-    });
-
-    DeviceEventEmitter.addListener('locationProviderStatusChange', function(status) { // only trigger when "providerListener" is enabled
-        console.log(status); //  status => {enabled: false, status: "disabled"} or {enabled: true, status: "enabled"}
-    });
-    this.getCurrentPosition();
-
-
-       let { params } = this.props.navigation.state;
       
-       if (params) {
-           console.log(params,"params")
-           this.setState({
-               name: params.name,
-               phone: params.phone,
-               show:true,
-               hide:false,
-            })
-            console.log(this.state.name,"item")
-       }    
+      let { params } = this.props.navigation.state;
+      
+      if (params) {
+        console.log(params,"params")
+        this.setState({
+          name: params.name,
+          phone: params.phone,
+          show:true,
+          hide:false,
+        })
+        console.log(this.state.name,"item")
+      }else{
+        this.permistion();
+        
+      }    
+      this.getCurrentPosition();
     }
  
     onChange(name, val) {
@@ -360,8 +354,7 @@ export default class Dashboard extends Component {
             :null
             } 
  
-        { (show)?         
-   <View>
+     
                     <TextField
                         label='Address'
                         tintColor = '#ffff'
@@ -370,28 +363,16 @@ export default class Dashboard extends Component {
                         value={this.state.address}
                         onChangeText={this.onChange.bind(this, 'address')}
                     />
-                        <TouchableOpacity disabled={disable} onPress={()=>{this.submit()}} style={DashboardStyle.ButtonStyle}
-                            >
-                                <Text style={DashboardStyle.buttomText}>
-                                    Book Now
-                            </Text>
-                            </TouchableOpacity>
-                            </View>
-                         :null
-                         }   
-                  { (hide)?
-                            <View>
-                        <TouchableOpacity  onPress={()=>{this.hide()}} style={DashboardStyle.ButtonStyle}
-                            >
-                                <Text style={DashboardStyle.buttomText}>
-                                    Book Now
-                            </Text>
-                            </TouchableOpacity>
-                            </View>
-                        :null  }
+                    
                        </View>
                 </View>
                
+                        <TouchableOpacity disabled={disable} onPress={()=>{this.submit()}} style={DashboardStyle.ButtonStyle}
+                            >
+                                <Text style={DashboardStyle.buttomText}>
+                                Further process
+                            </Text>
+                            </TouchableOpacity>
                 </ScrollView>
                 </ImageBackground>
             
@@ -406,13 +387,13 @@ const styles = StyleSheet.create({
         ...StyleSheet.absoluteFillObject,
         },
     mapContainer: {
-        height:300
+        height:220
     },
   
     container: {
         ...StyleSheet.absoluteFillObject,
          flex:1,
-         height:300,
+         height:220,
         justifyContent: 'flex-end',
         alignItems: 'center',
       },

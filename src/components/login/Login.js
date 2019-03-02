@@ -11,35 +11,62 @@ import {
 } from 'react-native';
 //user loagin
 import LoginStyle from './LoginStyle';
-
+import firebase from "firebase";
+import moment from "moment";
 export default class Login extends Component<{}> {
     constructor() {
         super();
         this.state = {
             name: "",
-            phone: ""
+            phone: "",
+            obj:""
         }
     }
 
     onChange(name, val) {
         this.setState({ [name]: val })
     }
-login=()=>{
-    let { name,phone} = this.state;
-   
-    let disable = !(!name && !phone);
+    componentWillMount(){
+ 
+        let { params } = this.props.navigation.state;
+      
+        if (params) {
+          console.log(params,"params")
+          this.setState({
+            // name: params.name,
+            // phone: params.phone,
+            obj: params,
 
-    if(disable){
-        let item = {
-           name,phone
-        };
-        this.props.navigation.navigate("Dashboard",item) 
-     
-    }else{
+           
+          })
+          console.log(this.state.name,"item")
+        }
 
     }
+            submit =()=>{
+            let { name,phone,obj} = this.state;
+            let date=moment().format(" Do MMM YY");
+            let time=moment().format('hh:mm A');
+            const get={name,phone,date,time};
+            const data = Object.assign(obj, get);
+        
+            firebase.database().ref("/").child("complain").push(data).then((successf)=>{
+                alert("Your order has been placed ")
+                this.setState({
+                    name:'',
+                    phone:'',
+
+                })
+            }).catch((err)=>{
+                alert(err)
+                })
+            
+        }
+   
+
+  
     
-}
+
     render() {
         let { name,phone} = this.state;
         let disable = !(name && phone);
@@ -74,10 +101,10 @@ login=()=>{
                             </View>
                             
                             <TouchableOpacity   disabled={disable} style={LoginStyle.ButtonStyle}
-                             onPress={() => {this.login()}}
+                             onPress={() => {this.submit()}}
                             >
                                 <Text style={LoginStyle.buttomText}>
-                                    LOG IN
+                                   ORDER
                  </Text>
                             </TouchableOpacity>
                           

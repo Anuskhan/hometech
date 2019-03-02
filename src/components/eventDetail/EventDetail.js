@@ -79,7 +79,7 @@
     
     <View style={styles.draw}>
 
-            <TouchableOpacity onPress={() => {this.props.navigation.goBack() } }
+            <TouchableOpacity onPress={() => {this.props.navigation.navigate("Events") } }
             style={{flex:1,height:40, paddingLeft:8,padding:5}}>
             <Image  style={{height:32,width:32}} source={require('../../assets/images/left-arrow.png')}/>
             
@@ -107,28 +107,28 @@
                             
                             <View style={EventDetailStyle.cardListItem}>
                                 <Text style={EventDetailStyle.cardListItemTitle}>Name : </Text>
-                                <Text style={EventDetailStyle.cardListItemText}>{name}</Text>
+                                <Text style={EventDetailStyle.cardListItemText}> {name} </Text>
                             </View>
                             
                             <View style={EventDetailStyle.cardListItem}>
                                 <Text style={EventDetailStyle.cardListItemTitle}>Address : </Text>
-                                <Text style={EventDetailStyle.cardListItemText}>{address}</Text>
+                                <Text style={EventDetailStyle.cardListItemText}> {address} </Text>
                             </View>
                             
                             <View style={EventDetailStyle.cardListItem}>
                                 <Text style={EventDetailStyle.cardListItemTitle}>Category : </Text>
-                                <Text style={EventDetailStyle.cardListItemText}>{category}</Text>
+                                <Text style={EventDetailStyle.cardListItemText}> {category} </Text>
                             </View>
                           {(subcategory) ? <View style={EventDetailStyle.cardListItem}>
                                 <Text style={EventDetailStyle.cardListItemTitle}>Sub category : </Text>
-                                <Text style={EventDetailStyle.cardListItemText}>{subcategory}</Text>
+                                <Text style={EventDetailStyle.cardListItemText}> {subcategory} </Text>
                             </View> :null}
                             <View style={EventDetailStyle.cardListItem}>
                                 <Text style={EventDetailStyle.cardListItemTitle}>Date : </Text>
-                                <Text style={EventDetailStyle.cardListItemText}>{date}</Text>
+                                <Text style={EventDetailStyle.cardListItemText}> {date} </Text>
                             </View>
                             <View style={EventDetailStyle.cardListItem}>
-                                    <Text style={EventDetailStyle.cardListItemTitle}>Phone : {phone}</Text>
+                                    <Text style={EventDetailStyle.cardListItemTitle}>Phone : {phone} </Text>
                                     <TouchableOpacity style={EventDetailStyle.listItemDetailIconButton} onPress={() => Communications.phonecall(phone, true)}>
                         <Image  style={EventDetailStyle.listItemDetailIcon} source={require('../../assets/images/phone.png')}/>
                 </TouchableOpacity> 
@@ -158,12 +158,12 @@
     
           },
         mapContainer: {
-            height:300
+            height:250
         },
         container: {
             ...StyleSheet.absoluteFillObject,
              flex:1,
-             height:300,
+             height:250,
             justifyContent: 'flex-end',
             alignItems: 'center',
           },

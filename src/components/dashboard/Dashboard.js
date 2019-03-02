@@ -23,7 +23,13 @@ export default class Dashboard extends Component {
     constructor() {
         super();
         this.state = {
-            mapRegion: null,
+            mapRegion: {
+              latitude:67.0011 ,
+              longitude:24.8607,
+              latitudeDelta: 0.00115,
+              longitudeDelta: 0.000121,
+            }
+            ,
         
             initialPosition: 'unknown',
             name:'',
@@ -32,9 +38,7 @@ export default class Dashboard extends Component {
             category:'',
             subcategory:'',
             arr:[],
-            show:false,
-            hide:true,
-
+         
         }
     }
 
@@ -92,22 +96,9 @@ export default class Dashboard extends Component {
       }  
     componentDidMount(){
 
-      
-      let { params } = this.props.navigation.state;
-      
-      if (params) {
-        console.log(params,"params")
-        this.setState({
-          name: params.name,
-          phone: params.phone,
-          show:true,
-          hide:false,
-        })
-        console.log(this.state.name,"item")
-      }else{
+     
         this.permistion();
         
-      }    
       this.getCurrentPosition();
     }
  
@@ -122,43 +113,15 @@ export default class Dashboard extends Component {
         this.setState({ subcategory: cat })
        
      }
-  hide =()=>{
-    alert('Login first please')
-    this.props.navigation.navigate("Login") 
-  }
-  submit =()=>{
-      
-      let {  name,phone,address,category,mapRegion,subcategory} = this.state;
-      if(!name && !phone ){
-        alert('Login first please')
-        this.props.navigation.navigate("Login") 
-      }
-    else{
-     if (!mapRegion.latitude=='' && !mapRegion.longitude==''){
-        
-    
-      let date=moment().format(" Do MMM YY");
-      let time=moment().format('hh:mm A');
-
-      let payload = {name,phone,address,category,subcategory,seen:true,date,time,latitude:mapRegion.latitude,longitude:mapRegion.longitude};
-      firebase.database().ref("/").child("complain").push(payload).then((successf)=>{
-          alert("Your order has been placed ")
-          this.setState({
-              address:'',
-              category:'',
-              subcategory:''
-
-            })
-        }).catch((err)=>{
-            alert(err)
-          })
-        }
-    }
-     
+ 
+  further =()=>{
+    let { address,category,mapRegion,subcategory} = this.state;
+    let item = {address,category,subcategory,seen:true,latitude:mapRegion.latitude,longitude:mapRegion.longitude};
+    this.props.navigation.navigate("Login",item) 
 }
     render() {
 
-        let { category,address,mapRegion,subcategory,show,hide} = this.state;
+        let { category,address,mapRegion,subcategory} = this.state;
         let disable = !(category && address );
         return (
                 <ImageBackground style={{ flex: 1 }} source={require('../../assets/images/main.jpg')}>
@@ -367,7 +330,7 @@ export default class Dashboard extends Component {
                        </View>
                 </View>
                
-                        <TouchableOpacity disabled={disable} onPress={()=>{this.submit()}} style={DashboardStyle.ButtonStyle}
+                        <TouchableOpacity disabled={disable} onPress={()=>{this.further()}} style={DashboardStyle.ButtonStyle}
                             >
                                 <Text style={DashboardStyle.buttomText}>
                                 Further process

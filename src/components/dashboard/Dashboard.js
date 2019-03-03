@@ -133,7 +133,7 @@ export default class Dashboard extends Component {
             <Image  style={{height:32,width:32}} source={require('../../assets/images/menu.png')}/>
             
           </TouchableOpacity>
-          <TouchableOpacity style={{flex:1,flexDirection: 'row',justifyContent:'flex-end', paddingLeft:8,padding:5}} onPress={() => Communications.phonecall('03030122259', true)}>
+          <TouchableOpacity style={{flex:1.2,flexDirection: 'row',justifyContent:'flex-end', paddingLeft:5,padding:5}} onPress={() => Communications.phonecall('03030122259', true)}>
           <Text style={{height:32,fontSize: 20,color:'black'}}> <Image  style={{height:32,width:32}} source={require('../../assets/images/phhone.png')}/> 03030122259 </Text>
                             
                           </TouchableOpacity> 
@@ -183,12 +183,7 @@ export default class Dashboard extends Component {
                 <Text  style={styles.txt}>REFRIGERATION</Text>
               </TouchableOpacity>
 
-              <TouchableOpacity onPress={()=>{ this.categoryfun('SALE PURCHASE') }}
-             style={(category=="SALE PURCHASE")?styles.opttest:styles.opt}>
-                <Image  style={styles.img} source={require('../../assets/images/ru.png')}/>
-
-                <Text  style={styles.txt}>SALE PURCHASE</Text>
-              </TouchableOpacity>
+             
               <TouchableOpacity onPress={()=>{ this.categoryfun('OVEN') }}
              style={(category=="OVEN")?styles.opttest:styles.opt}>
                 <Image  style={styles.img} source={require('../../assets/images/oven.png')}/>
@@ -212,7 +207,14 @@ export default class Dashboard extends Component {
 
                 <Text  style={styles.txt}>ELECTRICIAN</Text>
               </TouchableOpacity>
+             
+              <TouchableOpacity onPress={()=>{ this.categoryfun('SALE PURCHASE') }}
+                style={(category=="SALE PURCHASE")?styles.opttest:styles.opt}>
+                <Image  style={styles.img} source={require('../../assets/images/ru.png')}/>
 
+                <Text  style={styles.txt}>SALE PURCHASE</Text>
+              </TouchableOpacity>
+            
             </ScrollView>
             </View>
 
@@ -272,12 +274,12 @@ export default class Dashboard extends Component {
               <TouchableOpacity onPress={()=>{ this.subcategoryfun('De Frozen Fridge') }}
                 style={(subcategory=="De Frozen Fridge")?styles.opttest:styles.opt}>
                 <Image  style={styles.img1} source={require('../../assets/images/3.png')}/>
-                <Text style={styles.txt}>De Frozen Fridge</Text>
+                <Text style={styles.txt}>De Frost Fridge</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={()=>{ this.subcategoryfun('Non Frozen Fridge') }}
                 style={(subcategory=="Non Frozen Fridge")?styles.opttest:styles.opt}>
                 <Image  style={styles.img1} source={require('../../assets/images/3.png')}/>
-                <Text style={styles.txt}>Non Frozen Fridge</Text>
+                <Text style={styles.txt}>No Frost Fridge</Text>
               </TouchableOpacity>
               <TouchableOpacity onPress={()=>{ this.subcategoryfun('Water Dispenser') }}
                 style={(subcategory=="Water Dispenser")?styles.opttest:styles.opt}>

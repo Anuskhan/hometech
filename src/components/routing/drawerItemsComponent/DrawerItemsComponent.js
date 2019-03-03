@@ -49,14 +49,14 @@ export default class DrawerItemsComponent extends Component<{}> {
                             </TouchableOpacity>
 
                           
-                                    <TouchableOpacity style={[DrawerItemsComponentStyle.drawerListItem, DrawerItemsComponentStyle.logoutButton]} activeOpacity={0.6}
+                                    {/* <TouchableOpacity style={[DrawerItemsComponentStyle.drawerListItem, DrawerItemsComponentStyle.logoutButton]} activeOpacity={0.6}
                                     onPress={(nextRouteName)=>{this.props.navigation.navigate('Login')}}
                                     >
 
                                         <Text style={[DrawerItemsComponentStyle.drawerListItemText]}>
                                             Logout
                               </Text>
-                                    </TouchableOpacity>
+                                    </TouchableOpacity> */}
                                    
                         </View>
                     </ScrollView>

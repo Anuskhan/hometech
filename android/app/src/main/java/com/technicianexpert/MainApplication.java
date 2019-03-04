@@ -11,6 +11,7 @@ import com.facebook.soloader.SoLoader;
 import com.agontuk.RNFusedLocation.RNFusedLocationPackage;
 import java.util.Arrays;
 import java.util.List;
+// import com.burnweb.rnpermissions.RNPermissionsPackage;
 import com.showlocationservicesdialogbox.LocationServicesDialogBoxPackage;
 public class MainApplication extends Application implements ReactApplication {
 
@@ -27,6 +28,7 @@ public class MainApplication extends Application implements ReactApplication {
             new MapsPackage(),
               new RNFusedLocationPackage(),
            new LocationServicesDialogBoxPackage()
+            // new RNPermissionsPackage()
       );
     }
 

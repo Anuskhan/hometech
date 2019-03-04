@@ -7,6 +7,7 @@ import firebase from "firebase";
 import moment from "moment";
 import Communications from 'react-native-communications';
 // main page map waala 
+// import {checkPermission} from 'react-native-android-permissions';
 import Geolocation from 'react-native-geolocation-service';
 import {
     Text,
@@ -47,6 +48,7 @@ export default class Dashboard extends Component {
     }
     getCurrentPosition=()=> {
         // navigator.geolocation.getCurrentPosition(
+       
             Geolocation.getCurrentPosition(
             (position) => {
                     let region={   
@@ -66,6 +68,7 @@ export default class Dashboard extends Component {
      
     }
       permistion=()=>{
+     
         LocationServicesDialogBox.checkLocationServicesIsEnabled({
           message: "<h2>Use Location ?</h2>This app wants to change your device settings:<br/><br/>Use GPS, Wi-Fi, and cell network for location<br/><br/><a href='#'>Learn more</a>",
           ok: "YES",
@@ -94,14 +97,23 @@ export default class Dashboard extends Component {
       });
         
       }  
-    componentDidMount(){
-
+    componentWillMount(){
+      // checkPermission("android.permission.ACCESS_FINE_LOCATION").then((result) => {
+      //   console.log("Already Granted!");
+      //   console.log(result);
+      // }, (result) => {
+      //   console.log("Not Granted!");
+      //   console.log(result);
+      // });
      
         this.permistion();
         
       this.getCurrentPosition();
     }
- 
+    componentWillUnmount() {
+      // used only when "providerListener" is enabled
+      LocationServicesDialogBox.stopListener(); // Stop the "locationProviderStatusChange" listener
+  }
     onChange(name, val) {
         this.setState({ [name]: val })
     }  
@@ -271,13 +283,13 @@ export default class Dashboard extends Component {
                width: "100%"
              }}>
     
-              <TouchableOpacity onPress={()=>{ this.subcategoryfun('De Frozen Fridge') }}
-                style={(subcategory=="De Frozen Fridge")?styles.opttest:styles.opt}>
+              <TouchableOpacity onPress={()=>{ this.subcategoryfun('De Frost Fridge') }}
+                style={(subcategory=="De Frost Fridge")?styles.opttest:styles.opt}>
                 <Image  style={styles.img1} source={require('../../assets/images/3.png')}/>
                 <Text style={styles.txt}>De Frost Fridge</Text>
               </TouchableOpacity>
-              <TouchableOpacity onPress={()=>{ this.subcategoryfun('Non Frozen Fridge') }}
-                style={(subcategory=="Non Frozen Fridge")?styles.opttest:styles.opt}>
+              <TouchableOpacity onPress={()=>{ this.subcategoryfun('No Frost Fridge') }}
+                style={(subcategory=="No Frost Fridge")?styles.opttest:styles.opt}>
                 <Image  style={styles.img1} source={require('../../assets/images/3.png')}/>
                 <Text style={styles.txt}>No Frost Fridge</Text>
               </TouchableOpacity>

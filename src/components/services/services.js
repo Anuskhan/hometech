@@ -45,8 +45,8 @@ export default class Services extends Component {
   <View style={styles.cardSection2}>
 <Image style={styles.image} source={require('../../assets/images/3.png')} />
 <Text style={styles.txt}>REFRIGERATION SERVICE</Text>
-<Text style={styles.txtsub}>De Frozen Fridge</Text>
-<Text style={styles.txtsub}>Non Frozen Fridge</Text>
+<Text style={styles.txtsub}>De Frost Fridge</Text>
+<Text style={styles.txtsub}>Non Frost Fridge</Text>
 <Text style={styles.txtsub}>Water Dispenser</Text>
 
   <View style={{marginTop:"3%"}}>

@@ -58,7 +58,7 @@ export default class Events extends Component {
     };
     deleteCat=(id)=>{
         firebase.database().ref("/").child("complain").child(id).remove().then(()=>{
-            alert("Delete Category Successfully")
+            alert("Delete Successfully")
             this.fatch()
         })
     }
